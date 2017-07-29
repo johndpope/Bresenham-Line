@@ -18,7 +18,7 @@ extension CMKView {
         let pixel = convert(event.locationInWindow, from: nil).integral()
         currentLine = (pixel, pixel)
         
-        
+        randomArcs()
         setNeedsDisplay(bounds)
     }
     

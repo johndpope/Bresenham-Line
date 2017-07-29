@@ -83,8 +83,12 @@ class Bresenham:NSObject{
     }
     
     
-
     class func  pointsAlongCircle( xc:Int,  yc:Int,  r:Int)-> [CGPoint]
+    {
+        return self.pointsAlongCircle(xc:xc,yc:yc,r:r,octants:[0,1,2,3,4,5,6,7])
+    }
+    
+    class func  pointsAlongCircle( xc:Int,  yc:Int,  r:Int,octants:[Int])-> [CGPoint]
     {
         var  x = 0
         var  y = r
@@ -94,7 +98,7 @@ class Bresenham:NSObject{
         
         while(x <= y)
         {
-            for octant in 0...7{
+            for octant in octants{
                 var x1:Int, y1:Int;
                 (x1, y1) = switchFromOctantZeroTo(octant:octant,x:x,y:y)
                 result.append(CGPoint(x:xc + x1,y:yc + y1))

@@ -19,13 +19,51 @@ class CMKView: NSView {
     var circlePoints:[CGPoint] = []
     var circleMidPoints:[CGPoint] = []
     var octantPoints:[CGPoint] = []
+    var crossHairPoints:[CGPoint] = []
 
     // Optimize the rendering
     override var isOpaque: Bool {
         return true
     }
 
-    
+    func randomArcs(){
+        // Arcs + octants
+        octantPoints.removeAll()
+        var x = Int.rand(1000)
+        var y = Int.rand(1000)
+        var r = 4
+        
+        var idx = 0
+        while(true){
+            
+            
+            if(octantPoints.count > 100000){
+                break
+            }
+            let arcs = [Int.rand(8),Int.rand(8),Int.rand(8),Int.rand(8),Int.rand(8),Int.rand(8),Int.rand(8)]
+            let pts = Bresenham.pointsAlongCircle(xc: x, yc: y, r:r,octants: arcs)
+            octantPoints.append(contentsOf: pts)
+            
+            if (idx>Int.rand(100)){
+                break
+            }
+            r = r*2
+            idx += 1
+            
+            // break out into another circle
+            let randomBreakout = Int.rand(400)
+            if (r>2^randomBreakout){
+                crossHairPoints.append(CGPoint(x:x,y:y))
+                if (pts.count>0){
+                    let randomIndex = Int.rand(pts.count)
+                    let pt = pts[randomIndex]
+                    x = Int(pt.x)
+                    y = Int(pt.y)
+                    r = 4
+                }
+            }
+        }
+    }
     func preCalculateCirclePoints(){
         for i in 0...2{
             let pts = Bresenham.pointsAlongCircle(xc: 0, yc: 0, r: i*150)
@@ -37,21 +75,7 @@ class CMKView: NSView {
             circleMidPoints.append(contentsOf: pts)
         }
         
-        // Arcs + octants
-        let x = 0
-        let y = 0
-        var r = 2
-        while(true){
-
-            let pts = Bresenham.pointsForOctants(xc: x, yc: y, radialRange: Array(r...r),octants: [0,1])
-            octantPoints.append(contentsOf: pts)
-            if (r>1100){
-                break
-            }
-            r = r*2
-            
-        }
-        
+       
 
     }
     
@@ -98,33 +122,14 @@ class CMKView: NSView {
         // Mid point algorithm
         context.fillPixels(circleMidPoints)
         
-        // octant segments
-        context.setFillColor(NSColor.blue.cgColor)
+        // octant random arc segments
+        context.setFillColor(NSColor.black.cgColor)
         context.fillPixels(octantPoints)
         
-        
+        context.drawCrossHair(pts: crossHairPoints)
     }
 
 }
 
 
-extension CGContext {
-
-    func fillPixels(_ pixels: [CGPoint]) {
-        var size:CGSize?
-        if Screen.retinaScale > 1{
-            size = CGSize(width: 1.5, height: 1.5)
-        }else{
-            size = CGSize(width: 1.0, height: 1.0)
-        }
-
-        for pixel in pixels{
-          fill(CGRect(origin: pixel, size: size!))
-        }
-    }
-    
-    func fill(_ pixel: CGPoint) {
-        fill(CGRect(origin: pixel, size: CGSize(width: 1.0, height: 1.0)))
-    }
-}
 
