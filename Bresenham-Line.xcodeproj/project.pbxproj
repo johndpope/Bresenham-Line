@@ -7,7 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		832A05191F2C17C100189151 /* CMKView+Mouse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A05181F2C17C100189151 /* CMKView+Mouse.swift */; };
+		1707B98B2121F1D100FA1E70 /* ImageToSpectrumByFFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1707B9882121F1D100FA1E70 /* ImageToSpectrumByFFT.swift */; };
+		1707B98C2121F1D100FA1E70 /* TimeAxisWaveFormPlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1707B9892121F1D100FA1E70 /* TimeAxisWaveFormPlot.swift */; };
+		1707B98D2121F1D100FA1E70 /* TimeAxisWaveFormGenerate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1707B98A2121F1D100FA1E70 /* TimeAxisWaveFormGenerate.swift */; };
+		1707B9902121F1E500FA1E70 /* EasyImagy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1707B98E2121F1E500FA1E70 /* EasyImagy.framework */; };
+		1707B9912121F1E500FA1E70 /* Surge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1707B98F2121F1E500FA1E70 /* Surge.framework */; };
+		1707B9922121F21A00FA1E70 /* EasyImagy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1707B98E2121F1E500FA1E70 /* EasyImagy.framework */; };
+		1707B9932121F21A00FA1E70 /* EasyImagy.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1707B98E2121F1E500FA1E70 /* EasyImagy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1707B9942121F21A00FA1E70 /* Surge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1707B98F2121F1E500FA1E70 /* Surge.framework */; };
+		1707B9952121F21A00FA1E70 /* Surge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1707B98F2121F1E500FA1E70 /* Surge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1707B99A2121FD4A00FA1E70 /* CMKView+Mouse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1707B9982121FD4A00FA1E70 /* CMKView+Mouse.swift */; };
+		1707B99B2121FD4A00FA1E70 /* CGPoint+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1707B9992121FD4A00FA1E70 /* CGPoint+Hashable.swift */; };
+		17958E27212B445600F5B2AA /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17958E26212B445600F5B2AA /* CGPoint+Extension.swift */; };
+		17D6EDCC2118CB4B00F18F2B /* download.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D6EDCB2118CB4B00F18F2B /* download.png */; };
+		17D6EDCE2118DAD700F18F2B /* FAST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D6EDCD2118DAD700F18F2B /* FAST.swift */; };
+		17EC48F1211A180600B32AE0 /* fast_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 17EC48F0211A180600B32AE0 /* fast_1.png */; };
 		832A051B1F2C180D00189151 /* CMKBresenham.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A051A1F2C180D00189151 /* CMKBresenham.swift */; };
 		DB224C941E7C2772001A1AEE /* NSPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB224C931E7C2772001A1AEE /* NSPoint.swift */; };
 		DB224C961E7C2EEA001A1AEE /* CMKView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB224C951E7C2EEA001A1AEE /* CMKView.swift */; };
@@ -22,8 +36,33 @@
 		DBFC82A21E7C0AEC00A86F74 /* CMKMouseTrackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC82A11E7C0AEC00A86F74 /* CMKMouseTrackDelegate.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		1707B9962121F21A00FA1E70 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1707B9932121F21A00FA1E70 /* EasyImagy.framework in Embed Frameworks */,
+				1707B9952121F21A00FA1E70 /* Surge.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		832A05181F2C17C100189151 /* CMKView+Mouse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMKView+Mouse.swift"; sourceTree = "<group>"; };
+		1707B9882121F1D100FA1E70 /* ImageToSpectrumByFFT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageToSpectrumByFFT.swift; sourceTree = "<group>"; };
+		1707B9892121F1D100FA1E70 /* TimeAxisWaveFormPlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAxisWaveFormPlot.swift; sourceTree = "<group>"; };
+		1707B98A2121F1D100FA1E70 /* TimeAxisWaveFormGenerate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAxisWaveFormGenerate.swift; sourceTree = "<group>"; };
+		1707B98E2121F1E500FA1E70 /* EasyImagy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EasyImagy.framework; path = Carthage/Build/Mac/EasyImagy.framework; sourceTree = "<group>"; };
+		1707B98F2121F1E500FA1E70 /* Surge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Surge.framework; path = Carthage/Build/Mac/Surge.framework; sourceTree = "<group>"; };
+		1707B9982121FD4A00FA1E70 /* CMKView+Mouse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CMKView+Mouse.swift"; sourceTree = "<group>"; };
+		1707B9992121FD4A00FA1E70 /* CGPoint+Hashable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Hashable.swift"; sourceTree = "<group>"; };
+		17958E26212B445600F5B2AA /* CGPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
+		17D6EDCB2118CB4B00F18F2B /* download.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = download.png; path = "Bresenham-Line/download.png"; sourceTree = "<group>"; };
+		17D6EDCD2118DAD700F18F2B /* FAST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAST.swift; sourceTree = "<group>"; };
+		17EC48F0211A180600B32AE0 /* fast_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fast_1.png; path = "Bresenham-Line/fast_1.png"; sourceTree = "<group>"; };
 		832A051A1F2C180D00189151 /* CMKBresenham.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMKBresenham.swift; sourceTree = "<group>"; };
 		DB224C931E7C2772001A1AEE /* NSPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSPoint.swift; sourceTree = "<group>"; };
 		DB224C951E7C2EEA001A1AEE /* CMKView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMKView.swift; sourceTree = "<group>"; };
@@ -45,17 +84,52 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1707B9922121F21A00FA1E70 /* EasyImagy.framework in Frameworks */,
+				1707B9942121F21A00FA1E70 /* Surge.framework in Frameworks */,
+				1707B9912121F1E500FA1E70 /* Surge.framework in Frameworks */,
+				1707B9902121F1E500FA1E70 /* EasyImagy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1707B9872121F1D100FA1E70 /* DFFT */ = {
+			isa = PBXGroup;
+			children = (
+				1707B9882121F1D100FA1E70 /* ImageToSpectrumByFFT.swift */,
+				1707B9892121F1D100FA1E70 /* TimeAxisWaveFormPlot.swift */,
+				1707B98A2121F1D100FA1E70 /* TimeAxisWaveFormGenerate.swift */,
+			);
+			path = DFFT;
+			sourceTree = "<group>";
+		};
+		1707B9972121FD3700FA1E70 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1707B9992121FD4A00FA1E70 /* CGPoint+Hashable.swift */,
+				1707B9982121FD4A00FA1E70 /* CMKView+Mouse.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		17EC4911211B6B3C00B32AE0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DBFC827F1E7C016D00A86F74 = {
 			isa = PBXGroup;
 			children = (
+				1707B98E2121F1E500FA1E70 /* EasyImagy.framework */,
+				1707B98F2121F1E500FA1E70 /* Surge.framework */,
+				17EC48F0211A180600B32AE0 /* fast_1.png */,
+				17D6EDCB2118CB4B00F18F2B /* download.png */,
 				DBFC828A1E7C016D00A86F74 /* Bresenham-Line */,
 				DBFC82891E7C016D00A86F74 /* Products */,
+				17EC4911211B6B3C00B32AE0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,14 +144,17 @@
 		DBFC828A1E7C016D00A86F74 /* Bresenham-Line */ = {
 			isa = PBXGroup;
 			children = (
+				1707B9972121FD3700FA1E70 /* Extension */,
+				1707B9872121F1D100FA1E70 /* DFFT */,
 				DBFC82911E7C016D00A86F74 /* Main.storyboard */,
 				DBFC82A11E7C0AEC00A86F74 /* CMKMouseTrackDelegate.swift */,
 				DBFC829A1E7C03E400A86F74 /* CMKWindowController.swift */,
 				DBFC829C1E7C048300A86F74 /* CMKWindow.swift */,
 				DBFC828D1E7C016D00A86F74 /* CMKViewController.swift */,
 				DB224C951E7C2EEA001A1AEE /* CMKView.swift */,
+				17D6EDCD2118DAD700F18F2B /* FAST.swift */,
 				832A051A1F2C180D00189151 /* CMKBresenham.swift */,
-				832A05181F2C17C100189151 /* CMKView+Mouse.swift */,
+				17958E26212B445600F5B2AA /* CGPoint+Extension.swift */,
 				DBFC829E1E7C04EC00A86F74 /* Supporting Files */,
 			);
 			path = "Bresenham-Line";
@@ -106,6 +183,7 @@
 				DBFC82841E7C016D00A86F74 /* Sources */,
 				DBFC82851E7C016D00A86F74 /* Frameworks */,
 				DBFC82861E7C016D00A86F74 /* Resources */,
+				1707B9962121F21A00FA1E70 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -128,7 +206,7 @@
 				TargetAttributes = {
 					DBFC82871E7C016D00A86F74 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = Z68BDSMP42;
+						DevelopmentTeam = 2X74DFZB4P;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -158,6 +236,8 @@
 			files = (
 				DBFC82901E7C016D00A86F74 /* Assets.xcassets in Resources */,
 				DBFC82931E7C016D00A86F74 /* Main.storyboard in Resources */,
+				17D6EDCC2118CB4B00F18F2B /* download.png in Resources */,
+				17EC48F1211A180600B32AE0 /* fast_1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,15 +250,21 @@
 			files = (
 				DBFC82A21E7C0AEC00A86F74 /* CMKMouseTrackDelegate.swift in Sources */,
 				DBFC82A01E7C068A00A86F74 /* ConsolePrint.swift in Sources */,
+				1707B98C2121F1D100FA1E70 /* TimeAxisWaveFormPlot.swift in Sources */,
 				DBFC828E1E7C016D00A86F74 /* CMKViewController.swift in Sources */,
+				1707B98B2121F1D100FA1E70 /* ImageToSpectrumByFFT.swift in Sources */,
+				1707B99A2121FD4A00FA1E70 /* CMKView+Mouse.swift in Sources */,
 				DB224C941E7C2772001A1AEE /* NSPoint.swift in Sources */,
 				DBFC829D1E7C048300A86F74 /* CMKWindow.swift in Sources */,
-				832A05191F2C17C100189151 /* CMKView+Mouse.swift in Sources */,
+				17958E27212B445600F5B2AA /* CGPoint+Extension.swift in Sources */,
+				1707B99B2121FD4A00FA1E70 /* CGPoint+Hashable.swift in Sources */,
 				832A051B1F2C180D00189151 /* CMKBresenham.swift in Sources */,
+				17D6EDCE2118DAD700F18F2B /* FAST.swift in Sources */,
 				DBFC829B1E7C03E400A86F74 /* CMKWindowController.swift in Sources */,
 				DBF4FB9C1E7D578D005C3C37 /* Int.swift in Sources */,
 				DB224C961E7C2EEA001A1AEE /* CMKView.swift in Sources */,
 				DBFC828C1E7C016D00A86F74 /* AppDelegate.swift in Sources */,
+				1707B98D2121F1D100FA1E70 /* TimeAxisWaveFormGenerate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,10 +378,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = WMDZ2CQA8K;
+				DEVELOPMENT_TEAM = 2X74DFZB4P;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = "Bresenham-Line/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mainasuk.Bresenham-Line";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mainasuk.Bresenham-Line2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -307,10 +397,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = WMDZ2CQA8K;
+				DEVELOPMENT_TEAM = 2X74DFZB4P;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = "Bresenham-Line/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mainasuk.Bresenham-Line";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mainasuk.Bresenham-Line2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

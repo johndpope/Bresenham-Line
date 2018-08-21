@@ -8,6 +8,38 @@
 
 import Cocoa
 
+extension NSImage {
+    var CGImage: CGImage {
+        get {
+            return self.cgImage(forProposedRect: nil, context: nil, hints: nil)!
+        }
+    }
+}
+// DEPRECATE USE EASYIMAGY
+extension NSImage {
+    func getPixelColor(_ pos: CGPoint) -> NSColor {
+        
+        let pixelData = self.CGImage.dataProvider?.data
+        let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
+        
+        let pixelInfo: Int = ((Int(self.size.width) * Int(pos.y)) + Int(pos.x)) * 4
+        
+        let r = CGFloat(data[pixelInfo]) / CGFloat(255.0)
+        let g = CGFloat(data[pixelInfo+1]) / CGFloat(255.0)
+        let b = CGFloat(data[pixelInfo+2]) / CGFloat(255.0)
+        //        var a = CGFloat(data[pixelInfo+3]) / CGFloat(255.0)
+        let a = CGFloat(1.0)
+        
+        return NSColor(red: r, green: g, blue: b, alpha: a)
+    }
+}
+
+class Data{
+    var view:CMKView?
+}
+
+let data = Data()
+
 class CMKView: NSView {
 
     typealias Line = BresenhamLine
@@ -17,6 +49,7 @@ class CMKView: NSView {
 
     var runOnce = false
     var circlePoints:[CGPoint] = []
+    var redCirclePoints:[CGPoint] = []
     var circleMidPoints:[CGPoint] = []
     var octantPoints:[CGPoint] = []
 
@@ -25,12 +58,17 @@ class CMKView: NSView {
         return true
     }
 
+    var imageView:NSImageView?
+    
     
     func preCalculateCirclePoints(){
-        for i in 0...2{
-            let pts = Bresenham.pointsAlongCircle(xc: 0, yc: 0, r: i*150)
-            circlePoints.append(contentsOf: pts)
-        }
+        
+        data.view = self
+        // add test image
+
+
+        
+        
         
         for i in 0...3{
             let pts = Bresenham.pointsAlongMidPoint(xc: 300, yc: 300, r: i*80)
@@ -59,6 +97,7 @@ class CMKView: NSView {
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 
+        
         Swift.print("")
         Swift.print("----- Drawing -----")
 
@@ -67,17 +106,21 @@ class CMKView: NSView {
             return
         }
 
+        // Fill background to white
+        context.setFillColor(.white)
+        context.fill(bounds)
+        context.setFillColor(NSColor.red.cgColor)
+        
         if (!runOnce){
             runOnce = true
             preCalculateCirclePoints()
         }
         
-        // Fill background to white
-        context.setFillColor(.white)
-        context.fill(bounds)
-        context.setFillColor(NSColor.red.cgColor)
 
-       
+
+        // Draw red line
+        context.fillPixels(redCirclePoints)
+        
         // Draw lines
         for line in lines {
            let pts =  Bresenham.pointsAlongLineBresenham(line)
@@ -108,14 +151,41 @@ class CMKView: NSView {
 }
 
 
+class TestView:NSView{
+    
+    var myPixels:[CGPoint] = []
+    
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
+        
+        guard let context: CGContext = NSGraphicsContext.current()?.cgContext else {
+            consolePrint("Cannot get graphics context")
+            return
+        }
+        
+        // Fill background to white
+        context.setFillColor(.clear)
+        context.fill(bounds)
+        context.setFillColor(NSColor.blue.cgColor)
+        
+        
+        // Draw pixels
+        context.fillPixels(myPixels)
+        
+        
+    }
+}
+
+
+
 extension CGContext {
 
     func fillPixels(_ pixels: [CGPoint]) {
         var size:CGSize?
         if Screen.retinaScale > 1{
-            size = CGSize(width: 1.5, height: 1.5)
+            size = CGSize(width: 3, height: 3)
         }else{
-            size = CGSize(width: 1.0, height: 1.0)
+            size = CGSize(width: 2, height: 2)
         }
 
         for pixel in pixels{

@@ -10,6 +10,25 @@ import Cocoa
 
 typealias BresenhamLine = (from: CGPoint, to: CGPoint)
 
+
+struct BGPoint{
+    var point  = CGPoint()
+    var _octant = -1
+    var octant: Int  {
+        get {
+            return _octant
+        }
+        set { _octant = newValue }
+    }
+    
+    public init(x:CGFloat,y:CGFloat,o:Int){
+        point.x = x
+        point.y = y
+        _octant = octant
+    }
+}
+
+
 class Bresenham:NSObject{
     
     class func pointsAlongLineBresenham(_ line: BresenhamLine)->[CGPoint] {
@@ -34,7 +53,7 @@ class Bresenham:NSObject{
         var y = Int(line.from.y)
         
         for _ in 0...dx {
-            let pt = CGPoint(x: x, y: y)
+            let pt = CGPoint(x: x, y:y)
             result.append(pt)
             
             if e >= 0 {
@@ -51,7 +70,7 @@ class Bresenham:NSObject{
             // always plus 2dy
             e += 2 * dy
         }
-        return result
+        return result.unique()
     }
     
 
@@ -78,12 +97,16 @@ class Bresenham:NSObject{
             }
             
         }
-        return result
+        return result.unique()
         
     }
     
     
-
+    class func  pointsAlongCircle( pt:CGPoint,  r:Int)-> [CGPoint]
+    {
+        return Bresenham.pointsAlongCircle(xc:Int(pt.x),yc:Int(pt.y),r:r)
+    }
+    
     class func  pointsAlongCircle( xc:Int,  yc:Int,  r:Int)-> [CGPoint]
     {
         var  x = 0
@@ -109,7 +132,7 @@ class Bresenham:NSObject{
             }
             x = x + 1;
         }
-        return result
+        return result.unique()
     }
     
     
@@ -125,7 +148,7 @@ class Bresenham:NSObject{
                                     octants:octants)
         }
         
-        return pts
+        return pts.unique()
     }
     
     class func  pointsForOctants( xc:Int,  yc:Int,  radialRange:[Int],octants:[Int])-> [CGPoint]
@@ -164,7 +187,7 @@ class Bresenham:NSObject{
             
         }
         
-        return result
+        return result.unique()
     }
 
 
