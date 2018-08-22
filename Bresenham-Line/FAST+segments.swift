@@ -10,9 +10,12 @@ extension FAST{
     // FindCorners - Finds corners coordinates on the graysacaled image.
     func findLines(image:Image<RGBA<UInt8>>,  threshold:Int)-> [CGPoint] {
         
+        
+        
         print("GRAY SCALING BEGIN")
         let grayScaleImage = image.map { $0.gray }
         print("GRAY SCALING END")
+        
         
         var corners :[CGPoint] = []
         let r = 3
@@ -67,8 +70,14 @@ extension FAST{
                     
                     // Dig up the respective grayscale values for surrounding pixels
                     var circlePixels: [UInt8] = []
+                    
+                    // local binary pattern / will incur performance hit for digging up all the surrounding data.
+                    var circleLBP: [UInt8] = []
+                    
                     for seg in surroudingPixelSegments{
                         let cp = grayScaleImage[seg.x, seg.y]
+                        let lbp = grayScaleImage.OLBPat(x: seg.x, y: seg.y)
+                        circleLBP.append(lbp)
                         circlePixels.append(cp)
                     }
                     
