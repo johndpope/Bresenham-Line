@@ -54,7 +54,9 @@ extension Image{
 
 class FAST{
     
-    static var circleGrid:Dictionary<CGPoint,[CGPoint]> = Dictionary<CGPoint,[CGPoint]>()
+    // at radius 3 -> at point x,y -> give me surrounding pixels
+    static var gridCircle = Dictionary<CGPoint,[CGPoint]>()
+
 
     // FindCorners - Finds corners coordinates on the graysacaled image.
     func findCorners(image:Image<RGBA<UInt8>>,  threshold:Int)-> [CGPoint] {
@@ -64,29 +66,30 @@ class FAST{
         print("GRAY SCALING END")
         
         var corners :[CGPoint] = []
-        let r = 3
+      
         
         print("BEGIN")  // TODO calculate this offline / save to nsdefaults
         // When looping through the image pixels, skips the first three lines from
         // the image boundaries to constrain the surrounding circle inside the image
         // area.
-        let iRange = image.width   - (r+1)
-        let jRange = image.height - (r+1)
-        for i in r...iRange { // 3 -> width - 4
-            for  j in  r...jRange { // 3 -> height - 4
+        let iRange = image.width   - 4
+        let jRange = image.height - 4
+       
+        var circleGrid = Dictionary<CGPoint,[CGPoint]>() // given a point as key -> return surrounding pixels values
+        for i in 3...iRange {
+            for  j in  3...jRange {
                 let pt = CGPoint(x: i, y: j)
-                FAST.circleGrid[pt] =  Bresenham.pointsAlongCircle(pt:pt, r: r) // 16 points
+                circleGrid[pt] =  Bresenham.pointsAlongCircle(pt:pt, r: 3)
             }
         }
-        
-        print("END")
-        // circleGrid.keys.count ~ 160,000 keys x 16 surrounding pixels
-        for ptKey in FAST.circleGrid.keys{
 
+        print("END")
+        for ptKey in circleGrid.keys{
+            
             let i = Int(ptKey.x)
             let j = Int(ptKey.y)
             
-            if let  surroudingPixelPoints = FAST.circleGrid[ptKey]{ // 16 points
+            if let  surroudingPixelPoints = circleGrid[ptKey]{ // 16 points
                 
                 // Dig up the respective grayscale values for surrounding pixels
                 var circlePixels: [UInt8] = []
@@ -101,11 +104,15 @@ class FAST{
                     //The pixel p is classified as a corner, as optimization increment j by the circle radius 3 to skip the neighbor pixels inside the surrounding circle. This can be removed without compromising the result.
                     let corner = CGPoint(x:i,y:image.height-j)
                     corners.append(corner)
-//                    j += r
+                    //                    j += r //TODO restore skip
                 }
             }
-
+            
+            
         }
+        
+        
+
         
         return corners
     }

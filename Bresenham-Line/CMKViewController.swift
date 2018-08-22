@@ -87,11 +87,9 @@ class CMKViewController: NSViewController {
             1,  4,  6,  4, 1,
             ]).map { Float($0) / 256.0 }
         let newImage = image.convoluted(with: kernel)
-//
-//
         
         let fast = FAST()
-        let cnrs = fast.findCorners(image: newImage, threshold: 40)
+        let cnrs = fast.findLines(image: newImage, threshold: 2)
         testView.myPixels = cnrs
         
     }
