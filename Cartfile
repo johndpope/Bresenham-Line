@@ -1,2 +1,2 @@
-github "johndpope/EasyImagy" 
+github "johndpope/EasyImagy" "0.5.1"
 github "johndpope/Surge" ~> 2.1.1

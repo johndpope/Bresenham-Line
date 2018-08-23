@@ -8,23 +8,24 @@
 
 import Cocoa
 import EasyImagy
+import Foundation
 
 
 extension CMKViewController {
 
-    func generateTrainingImage(angle:Float, width:Int, height:Int, thickness:Int)->Image<RGBA<UInt8>>{
-         let image = Image<RGBA<UInt8>>(width: width, height: height, pixel: RGBA.transparent)
+    func generateTrainingImage(_ angle:Float,_ width:Int,_ height:Int,_ thickness:Double)->Image<RGBA<UInt8>>{
+        var image = Image<RGBA<UInt8>>(width: width, height: height, pixel: RGBA.transparent)
 
-        let x_0 = width / 2
-        let y_0 = height / 2
+        let x_0 = Float(width / 2)
+        let y_0 = Float(height / 2)
         let c = cos(angle)
         let s  = sin(angle)
         for y in 0...height{
             for x in 0...width{
-                let w1 = abs((x-x_0)*c + (y-y_0)*s)
-                let h1 = -(x-x_0)*s + (y-y_0)*c
-                if (w1 < (thickness / 2) && h1  > 0){
-                     image[x,y] = 1
+                let w1 = abs((Float(x)-x_0)*c + (Float(y)-y_0)*s)
+                let h1 = -(Float(x)-x_0)*s + (Float(y)-y_0)*c
+                if (w1 < Float(thickness / 2) && h1  > 0){
+                     image[x,y] = RGBA(red: 255, green: 0, blue: 0, alpha: 127)
                 }
             }
         }
@@ -43,25 +44,25 @@ extension CMKViewController {
 
         let numTrain = 1000
         let numTest = 1000
-        let testImages = []
-        let testAngles = []
-        let trainImages = []
-        let trainAngles = []
+        var testImages:[Image<RGBA<UInt8>>] = []
+        var testAngles:[Float] = []
+        var trainImages:[Image<RGBA<UInt8>>] = []
+        var trainAngles:[Float] = []
         
         
-        for i in 0...numTrain{
-            let angle = pi*(2*rand() - 1)
+        for _ in 0...numTrain{
+            let angle = Float.pi*Float(2*arc4random() - 1)
             trainAngles.append(angle)
             let image = generateTrainingImage(angle,width,height,thickness)
             trainImages.append(image)
         }
         
        
-        for i in 0...numTest{
-            let angle = pi*(2*rand() - 1)
-            testAngles.append(append)
+        for _ in 0...numTest{
+            let angle = Float.pi*Float(2*arc4random() - 1)
+            testAngles.append(angle)
             let image = generateTrainingImage(angle,width,height,thickness)
-            trainImages.append(image)
+            testImages.append(image)
         }
 
     }
@@ -90,9 +91,9 @@ extension CMKViewController {
         print("points:",points)
         
 
-        let fast = FAST()
-        let cnrs = fast.findLines(image: newImage, threshold: 2)
-        testView.myPixels = cnrs
+//        let fast = FAST()
+//        let cnrs = fast.findLines(image: newImage, threshold: 2)
+//        testView.myPixels = cnrs
         
     }
     
