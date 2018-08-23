@@ -25,20 +25,30 @@ extension UInt8 {
 extension Image where Pixel == UInt8 {
     //or Pixel == RGBA<UInt32> 
     
-    public func OLPB()->[Float]{
-        var histogram :[Float] = []
-        for x in self.xRange{
-            for y in self.yRange{
+    public func OLPB()->[UInt8]{
+        var histogram :[UInt8] = []
+
+        for x in 1...self.xRange.upperBound - 1{
+            for y in 1...self.yRange.upperBound - 1{
                 let olbp = OLBPat(x: x, y: y)
-//                histogram.append(olbp)
+                histogram.append(olbp)
             }
         }
         return histogram
     }
     
+  
     //Original LBP
+    // https://github.com/carolinepacheco/lbplibrary/tree/master/package_lbp/olbp
     public func OLBPat(x: Int, y: Int)->UInt8{
 
+        if(x == 0 || y == 0) {
+          return 0
+        }
+        if(x >= self.xRange.upperBound - 1 || y >= self.yRange.upperBound - 1){
+          return 0
+        }
+        
         let centerIntensity = self[x,y]
         let bottomLeftIntensity  = self[x-1,y-1]
         let leftIntensity        = self[x-1, y]
@@ -59,7 +69,7 @@ extension Image where Pixel == UInt8 {
         code |= step(centerIntensity, bottomRightIntensity) << 1
         code |= step(centerIntensity, bottomIntensity) << 0
         
-        print("code:",code.toBinaryString)
+//        print("code:",code.toBinaryString)
   
         return code
     }

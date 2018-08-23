@@ -25,18 +25,19 @@
 		170DED70212C9A64004BF4AE /* CGPoint+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DED6A212C9A63004BF4AE /* CGPoint+Hashable.swift */; };
 		170DED71212C9A64004BF4AE /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DED6B212C9A63004BF4AE /* CGPoint+Extension.swift */; };
 		174FEB0D212DE550004EA830 /* Image+LBP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB0C212DE550004EA830 /* Image+LBP.swift */; };
+		174FEB14212F4E12004EA830 /* CMKMouseTrackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB0F212F4E12004EA830 /* CMKMouseTrackDelegate.swift */; };
+		174FEB15212F4E12004EA830 /* CMKWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB10212F4E12004EA830 /* CMKWindowController.swift */; };
+		174FEB16212F4E12004EA830 /* CMKWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB11212F4E12004EA830 /* CMKWindow.swift */; };
+		174FEB17212F4E12004EA830 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB12212F4E12004EA830 /* AppDelegate.swift */; };
+		174FEB18212F4E12004EA830 /* CMKView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB13212F4E12004EA830 /* CMKView.swift */; };
+		174FEB1C212F4E8E004EA830 /* CMKViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB1B212F4E8E004EA830 /* CMKViewController.swift */; };
+		17D20334212F619E00D92039 /* CMKViewController+Net.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB19212F4E31004EA830 /* CMKViewController+Net.swift */; };
 		17D6EDCC2118CB4B00F18F2B /* download.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D6EDCB2118CB4B00F18F2B /* download.png */; };
 		17D6EDCE2118DAD700F18F2B /* FAST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D6EDCD2118DAD700F18F2B /* FAST.swift */; };
 		17EC48F1211A180600B32AE0 /* fast_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 17EC48F0211A180600B32AE0 /* fast_1.png */; };
 		832A051B1F2C180D00189151 /* Bresenham.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A051A1F2C180D00189151 /* Bresenham.swift */; };
-		DB224C961E7C2EEA001A1AEE /* CMKView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB224C951E7C2EEA001A1AEE /* CMKView.swift */; };
-		DBFC828C1E7C016D00A86F74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC828B1E7C016D00A86F74 /* AppDelegate.swift */; };
-		DBFC828E1E7C016D00A86F74 /* CMKViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC828D1E7C016D00A86F74 /* CMKViewController.swift */; };
 		DBFC82901E7C016D00A86F74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBFC828F1E7C016D00A86F74 /* Assets.xcassets */; };
 		DBFC82931E7C016D00A86F74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBFC82911E7C016D00A86F74 /* Main.storyboard */; };
-		DBFC829B1E7C03E400A86F74 /* CMKWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC829A1E7C03E400A86F74 /* CMKWindowController.swift */; };
-		DBFC829D1E7C048300A86F74 /* CMKWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC829C1E7C048300A86F74 /* CMKWindow.swift */; };
-		DBFC82A21E7C0AEC00A86F74 /* CMKMouseTrackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC82A11E7C0AEC00A86F74 /* CMKMouseTrackDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,20 +70,21 @@
 		170DED6A212C9A63004BF4AE /* CGPoint+Hashable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Hashable.swift"; sourceTree = "<group>"; };
 		170DED6B212C9A63004BF4AE /* CGPoint+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
 		174FEB0C212DE550004EA830 /* Image+LBP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+LBP.swift"; sourceTree = "<group>"; };
+		174FEB0F212F4E12004EA830 /* CMKMouseTrackDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMKMouseTrackDelegate.swift; sourceTree = "<group>"; };
+		174FEB10212F4E12004EA830 /* CMKWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMKWindowController.swift; sourceTree = "<group>"; };
+		174FEB11212F4E12004EA830 /* CMKWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMKWindow.swift; sourceTree = "<group>"; };
+		174FEB12212F4E12004EA830 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		174FEB13212F4E12004EA830 /* CMKView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMKView.swift; sourceTree = "<group>"; };
+		174FEB19212F4E31004EA830 /* CMKViewController+Net.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CMKViewController+Net.swift"; sourceTree = "<group>"; };
+		174FEB1B212F4E8E004EA830 /* CMKViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMKViewController.swift; sourceTree = "<group>"; };
 		17D6EDCB2118CB4B00F18F2B /* download.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = download.png; path = "Bresenham-Line/download.png"; sourceTree = "<group>"; };
 		17D6EDCD2118DAD700F18F2B /* FAST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAST.swift; sourceTree = "<group>"; };
 		17EC48F0211A180600B32AE0 /* fast_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fast_1.png; path = "Bresenham-Line/fast_1.png"; sourceTree = "<group>"; };
 		832A051A1F2C180D00189151 /* Bresenham.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bresenham.swift; sourceTree = "<group>"; };
-		DB224C951E7C2EEA001A1AEE /* CMKView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMKView.swift; sourceTree = "<group>"; };
 		DBFC82881E7C016D00A86F74 /* Bresenham-Line.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bresenham-Line.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DBFC828B1E7C016D00A86F74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DBFC828D1E7C016D00A86F74 /* CMKViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMKViewController.swift; sourceTree = "<group>"; };
 		DBFC828F1E7C016D00A86F74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBFC82921E7C016D00A86F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DBFC82941E7C016D00A86F74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DBFC829A1E7C03E400A86F74 /* CMKWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMKWindowController.swift; sourceTree = "<group>"; };
-		DBFC829C1E7C048300A86F74 /* CMKWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMKWindow.swift; sourceTree = "<group>"; };
-		DBFC82A11E7C0AEC00A86F74 /* CMKMouseTrackDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMKMouseTrackDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,19 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		174FEB0E212F4E12004EA830 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				174FEB12212F4E12004EA830 /* AppDelegate.swift */,
+				174FEB0F212F4E12004EA830 /* CMKMouseTrackDelegate.swift */,
+				174FEB13212F4E12004EA830 /* CMKView.swift */,
+				174FEB11212F4E12004EA830 /* CMKWindow.swift */,
+				174FEB10212F4E12004EA830 /* CMKWindowController.swift */,
+				174FEB1B212F4E8E004EA830 /* CMKViewController.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
 		17EC4911211B6B3C00B32AE0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,15 +170,12 @@
 		DBFC828A1E7C016D00A86F74 /* Bresenham-Line */ = {
 			isa = PBXGroup;
 			children = (
+				174FEB0E212F4E12004EA830 /* Application */,
 				170DED65212C9A63004BF4AE /* Extension */,
 				1707B9872121F1D100FA1E70 /* DFFT */,
 				832A051A1F2C180D00189151 /* Bresenham.swift */,
 				170DED61212C94D4004BF4AE /* Bresenham+Segments.swift */,
-				DBFC82A11E7C0AEC00A86F74 /* CMKMouseTrackDelegate.swift */,
-				DB224C951E7C2EEA001A1AEE /* CMKView.swift */,
-				DBFC828D1E7C016D00A86F74 /* CMKViewController.swift */,
-				DBFC829C1E7C048300A86F74 /* CMKWindow.swift */,
-				DBFC829A1E7C03E400A86F74 /* CMKWindowController.swift */,
+				174FEB19212F4E31004EA830 /* CMKViewController+Net.swift */,
 				17D6EDCD2118DAD700F18F2B /* FAST.swift */,
 				170DED63212C9967004BF4AE /* FAST+segments.swift */,
 				DBFC82911E7C016D00A86F74 /* Main.storyboard */,
@@ -175,7 +187,6 @@
 		DBFC829E1E7C04EC00A86F74 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				DBFC828B1E7C016D00A86F74 /* AppDelegate.swift */,
 				DBFC828F1E7C016D00A86F74 /* Assets.xcassets */,
 				DBFC82941E7C016D00A86F74 /* Info.plist */,
 			);
@@ -257,25 +268,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBFC82A21E7C0AEC00A86F74 /* CMKMouseTrackDelegate.swift in Sources */,
+				174FEB17212F4E12004EA830 /* AppDelegate.swift in Sources */,
 				170DED62212C94D5004BF4AE /* Bresenham+Segments.swift in Sources */,
+				174FEB1C212F4E8E004EA830 /* CMKViewController.swift in Sources */,
+				17D20334212F619E00D92039 /* CMKViewController+Net.swift in Sources */,
 				1707B98C2121F1D100FA1E70 /* TimeAxisWaveFormPlot.swift in Sources */,
-				DBFC828E1E7C016D00A86F74 /* CMKViewController.swift in Sources */,
 				170DED6D212C9A64004BF4AE /* CMKView+Mouse.swift in Sources */,
 				170DED6C212C9A64004BF4AE /* ConsolePrint.swift in Sources */,
+				174FEB14212F4E12004EA830 /* CMKMouseTrackDelegate.swift in Sources */,
 				174FEB0D212DE550004EA830 /* Image+LBP.swift in Sources */,
 				1707B98B2121F1D100FA1E70 /* ImageToSpectrumByFFT.swift in Sources */,
+				174FEB15212F4E12004EA830 /* CMKWindowController.swift in Sources */,
 				170DED64212C9967004BF4AE /* FAST+segments.swift in Sources */,
-				DBFC829D1E7C048300A86F74 /* CMKWindow.swift in Sources */,
 				832A051B1F2C180D00189151 /* Bresenham.swift in Sources */,
 				17D6EDCE2118DAD700F18F2B /* FAST.swift in Sources */,
 				170DED70212C9A64004BF4AE /* CGPoint+Hashable.swift in Sources */,
-				DBFC829B1E7C03E400A86F74 /* CMKWindowController.swift in Sources */,
+				174FEB18212F4E12004EA830 /* CMKView.swift in Sources */,
 				170DED71212C9A64004BF4AE /* CGPoint+Extension.swift in Sources */,
 				170DED6E212C9A64004BF4AE /* NSPoint.swift in Sources */,
 				170DED6F212C9A64004BF4AE /* Int.swift in Sources */,
-				DB224C961E7C2EEA001A1AEE /* CMKView.swift in Sources */,
-				DBFC828C1E7C016D00A86F74 /* AppDelegate.swift in Sources */,
+				174FEB16212F4E12004EA830 /* CMKWindow.swift in Sources */,
 				1707B98D2121F1D100FA1E70 /* TimeAxisWaveFormGenerate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

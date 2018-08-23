@@ -54,46 +54,10 @@ class CMKViewController: NSViewController {
         // Comment it to debug mouse track
         isDebug = false
         
-        test()
+        testAndTrainData()
+
     }
     
-    func test(){
-        // Add test image
-        let image = Image<RGBA<UInt8>>(nsImage: NSImage(named: "fast_1.png")!)
-
-        print("image.xRange:",image.xRange)
-        let testImage = NSImage(named: "fast_1.png")!
-        let testIV = NSImageView(image: testImage)
-        testIV.frame = CGRect(x:0,y:0,width:image.width, height:image.height)
-        self.view.addSubview(testIV)
-        
-        
-        
-        
-        let testView = TestView()
-        testView.frame = CGRect(x:0,y:0,width:image.width, height:image.height)
-        self.view.addSubview(testView)
-        
-        
-        
-        let points = Bresenham.pointsAlongCircle(xc: 0, yc: 0, r: 3)
-        print("points:",points)
-        
-        // Gaussian Filter
-        let kernel = Image<Int>(width: 5, height: 5, pixels: [
-            1,  4,  6,  4, 1,
-            4, 16, 24, 16, 4,
-            6, 24, 36, 24, 6,
-            4, 16, 24, 16, 4,
-            1,  4,  6,  4, 1,
-            ]).map { Float($0) / 256.0 }
-        let newImage = image.convoluted(with: kernel)
-        
-        let fast = FAST()
-        let cnrs = fast.findLines(image: newImage, threshold: 2)
-        testView.myPixels = cnrs
-        
-    }
     
 
 }
