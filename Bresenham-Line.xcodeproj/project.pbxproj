@@ -10,12 +10,6 @@
 		1707B98B2121F1D100FA1E70 /* ImageToSpectrumByFFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1707B9882121F1D100FA1E70 /* ImageToSpectrumByFFT.swift */; };
 		1707B98C2121F1D100FA1E70 /* TimeAxisWaveFormPlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1707B9892121F1D100FA1E70 /* TimeAxisWaveFormPlot.swift */; };
 		1707B98D2121F1D100FA1E70 /* TimeAxisWaveFormGenerate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1707B98A2121F1D100FA1E70 /* TimeAxisWaveFormGenerate.swift */; };
-		1707B9902121F1E500FA1E70 /* EasyImagy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1707B98E2121F1E500FA1E70 /* EasyImagy.framework */; };
-		1707B9912121F1E500FA1E70 /* Surge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1707B98F2121F1E500FA1E70 /* Surge.framework */; };
-		1707B9922121F21A00FA1E70 /* EasyImagy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1707B98E2121F1E500FA1E70 /* EasyImagy.framework */; };
-		1707B9932121F21A00FA1E70 /* EasyImagy.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1707B98E2121F1E500FA1E70 /* EasyImagy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1707B9942121F21A00FA1E70 /* Surge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1707B98F2121F1E500FA1E70 /* Surge.framework */; };
-		1707B9952121F21A00FA1E70 /* Surge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1707B98F2121F1E500FA1E70 /* Surge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		170DED62212C94D5004BF4AE /* Bresenham+Segments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DED61212C94D4004BF4AE /* Bresenham+Segments.swift */; };
 		170DED64212C9967004BF4AE /* FAST+segments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DED63212C9967004BF4AE /* FAST+segments.swift */; };
 		170DED6C212C9A64004BF4AE /* ConsolePrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DED66212C9A63004BF4AE /* ConsolePrint.swift */; };
@@ -24,6 +18,10 @@
 		170DED6F212C9A64004BF4AE /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DED69212C9A63004BF4AE /* Int.swift */; };
 		170DED70212C9A64004BF4AE /* CGPoint+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DED6A212C9A63004BF4AE /* CGPoint+Hashable.swift */; };
 		170DED71212C9A64004BF4AE /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DED6B212C9A63004BF4AE /* CGPoint+Extension.swift */; };
+		17346E4C2137038B009CC5E9 /* Surge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17346E4321370343009CC5E9 /* Surge.framework */; };
+		17346E4D2137038B009CC5E9 /* Surge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17346E4321370343009CC5E9 /* Surge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		173BF3772136F79800EAC3B3 /* libtensorflow_framework.so in Frameworks */ = {isa = PBXBuildFile; fileRef = 173BF3752136F79700EAC3B3 /* libtensorflow_framework.so */; };
+		173BF3782136F79800EAC3B3 /* libtensorflow.so in Frameworks */ = {isa = PBXBuildFile; fileRef = 173BF3762136F79800EAC3B3 /* libtensorflow.so */; };
 		174FEB0D212DE550004EA830 /* Image+LBP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB0C212DE550004EA830 /* Image+LBP.swift */; };
 		174FEB14212F4E12004EA830 /* CMKMouseTrackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB0F212F4E12004EA830 /* CMKMouseTrackDelegate.swift */; };
 		174FEB15212F4E12004EA830 /* CMKWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB10212F4E12004EA830 /* CMKWindowController.swift */; };
@@ -31,6 +29,8 @@
 		174FEB17212F4E12004EA830 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB12212F4E12004EA830 /* AppDelegate.swift */; };
 		174FEB18212F4E12004EA830 /* CMKView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB13212F4E12004EA830 /* CMKView.swift */; };
 		174FEB1C212F4E8E004EA830 /* CMKViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB1B212F4E8E004EA830 /* CMKViewController.swift */; };
+		17C181632137020F006FD01B /* EasyImagy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17C18156213701EB006FD01B /* EasyImagy.framework */; };
+		17C181642137020F006FD01B /* EasyImagy.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17C18156213701EB006FD01B /* EasyImagy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		17D20334212F619E00D92039 /* CMKViewController+Net.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB19212F4E31004EA830 /* CMKViewController+Net.swift */; };
 		17D6EDCC2118CB4B00F18F2B /* download.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D6EDCB2118CB4B00F18F2B /* download.png */; };
 		17D6EDCE2118DAD700F18F2B /* FAST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D6EDCD2118DAD700F18F2B /* FAST.swift */; };
@@ -40,6 +40,121 @@
 		DBFC82931E7C016D00A86F74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBFC82911E7C016D00A86F74 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		17346E3E21370343009CC5E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17346E2E21370342009CC5E9 /* Surge.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8A1E1AA19917A79009735E2;
+			remoteInfo = "Surge-iOS";
+		};
+		17346E4021370343009CC5E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17346E2E21370342009CC5E9 /* Surge.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F84A6AAE19A9A72F007B53E1;
+			remoteInfo = "SurgeTests-iOS";
+		};
+		17346E4221370343009CC5E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17346E2E21370342009CC5E9 /* Surge.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 614AD31F1FC0AD99002BFE1C;
+			remoteInfo = "Surge-macOS";
+		};
+		17346E4421370343009CC5E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17346E2E21370342009CC5E9 /* Surge.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 614AD3271FC0AD99002BFE1C;
+			remoteInfo = "SurgeTests-macOS";
+		};
+		17346E4621370343009CC5E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17346E2E21370342009CC5E9 /* Surge.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 614AD3511FC0B001002BFE1C;
+			remoteInfo = "Surge-tvOS";
+		};
+		17346E4821370343009CC5E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17346E2E21370342009CC5E9 /* Surge.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 614AD3591FC0B001002BFE1C;
+			remoteInfo = "SurgeTests-tvOS";
+		};
+		17346E4A21370343009CC5E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17346E2E21370342009CC5E9 /* Surge.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 614AD3821FC0B125002BFE1C;
+			remoteInfo = "Surge-watchOS";
+		};
+		17346E4E2137038B009CC5E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17346E2E21370342009CC5E9 /* Surge.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 614AD31E1FC0AD99002BFE1C;
+			remoteInfo = "Surge-macOS";
+		};
+		17C18151213701EB006FD01B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17C18147213701EA006FD01B /* EasyImagy.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D6134A0E1F85226C005592A2;
+			remoteInfo = "EasyImagy-iOS";
+		};
+		17C18153213701EB006FD01B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17C18147213701EA006FD01B /* EasyImagy.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D6134A171F85226D005592A2;
+			remoteInfo = "EasyImagyTests-iOS";
+		};
+		17C18155213701EB006FD01B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17C18147213701EA006FD01B /* EasyImagy.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D6134A601F852C80005592A2;
+			remoteInfo = "EasyImagy-macOS";
+		};
+		17C18157213701EB006FD01B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17C18147213701EA006FD01B /* EasyImagy.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D6134A681F852C80005592A2;
+			remoteInfo = "EasyImagyTests-macOS";
+		};
+		17C18159213701EB006FD01B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17C18147213701EA006FD01B /* EasyImagy.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D6134AA21F85D1F9005592A2;
+			remoteInfo = "EasyImagy-tvOS";
+		};
+		17C1815B213701EB006FD01B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17C18147213701EA006FD01B /* EasyImagy.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D6134AAA1F85D1FA005592A2;
+			remoteInfo = "EasyImagyTests-tvOS";
+		};
+		17C1815D213701EB006FD01B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17C18147213701EA006FD01B /* EasyImagy.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D6134AD21F85D800005592A2;
+			remoteInfo = "EasyImagy-watchOS";
+		};
+		17C181652137020F006FD01B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17C18147213701EA006FD01B /* EasyImagy.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D6134A5F1F852C80005592A2;
+			remoteInfo = "EasyImagy-macOS";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		1707B9962121F21A00FA1E70 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -47,8 +162,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1707B9932121F21A00FA1E70 /* EasyImagy.framework in Embed Frameworks */,
-				1707B9952121F21A00FA1E70 /* Surge.framework in Embed Frameworks */,
+				17C181642137020F006FD01B /* EasyImagy.framework in Embed Frameworks */,
+				17346E4D2137038B009CC5E9 /* Surge.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -59,7 +174,6 @@
 		1707B9882121F1D100FA1E70 /* ImageToSpectrumByFFT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageToSpectrumByFFT.swift; sourceTree = "<group>"; };
 		1707B9892121F1D100FA1E70 /* TimeAxisWaveFormPlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAxisWaveFormPlot.swift; sourceTree = "<group>"; };
 		1707B98A2121F1D100FA1E70 /* TimeAxisWaveFormGenerate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAxisWaveFormGenerate.swift; sourceTree = "<group>"; };
-		1707B98E2121F1E500FA1E70 /* EasyImagy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EasyImagy.framework; path = Carthage/Build/Mac/EasyImagy.framework; sourceTree = "<group>"; };
 		1707B98F2121F1E500FA1E70 /* Surge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Surge.framework; path = Carthage/Build/Mac/Surge.framework; sourceTree = "<group>"; };
 		170DED61212C94D4004BF4AE /* Bresenham+Segments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bresenham+Segments.swift"; sourceTree = "<group>"; };
 		170DED63212C9967004BF4AE /* FAST+segments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FAST+segments.swift"; sourceTree = "<group>"; };
@@ -69,6 +183,9 @@
 		170DED69212C9A63004BF4AE /* Int.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		170DED6A212C9A63004BF4AE /* CGPoint+Hashable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Hashable.swift"; sourceTree = "<group>"; };
 		170DED6B212C9A63004BF4AE /* CGPoint+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
+		17346E2E21370342009CC5E9 /* Surge.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Surge.xcodeproj; path = ../Surge/Surge.xcodeproj; sourceTree = "<group>"; };
+		173BF3752136F79700EAC3B3 /* libtensorflow_framework.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtensorflow_framework.so; path = "../../../../../Library/Developer/Toolchains/swift-tensorflow-DEVELOPMENT-2018-08-15-a.xctoolchain/usr/lib/swift/macosx/libtensorflow_framework.so"; sourceTree = "<group>"; };
+		173BF3762136F79800EAC3B3 /* libtensorflow.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtensorflow.so; path = "../../../../../Library/Developer/Toolchains/swift-tensorflow-DEVELOPMENT-2018-08-15-a.xctoolchain/usr/lib/swift/macosx/libtensorflow.so"; sourceTree = "<group>"; };
 		174FEB0C212DE550004EA830 /* Image+LBP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+LBP.swift"; sourceTree = "<group>"; };
 		174FEB0F212F4E12004EA830 /* CMKMouseTrackDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMKMouseTrackDelegate.swift; sourceTree = "<group>"; };
 		174FEB10212F4E12004EA830 /* CMKWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMKWindowController.swift; sourceTree = "<group>"; };
@@ -77,6 +194,7 @@
 		174FEB13212F4E12004EA830 /* CMKView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMKView.swift; sourceTree = "<group>"; };
 		174FEB19212F4E31004EA830 /* CMKViewController+Net.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CMKViewController+Net.swift"; sourceTree = "<group>"; };
 		174FEB1B212F4E8E004EA830 /* CMKViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMKViewController.swift; sourceTree = "<group>"; };
+		17C18147213701EA006FD01B /* EasyImagy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = EasyImagy.xcodeproj; path = ../EasyImagy/EasyImagy.xcodeproj; sourceTree = "<group>"; };
 		17D6EDCB2118CB4B00F18F2B /* download.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = download.png; path = "Bresenham-Line/download.png"; sourceTree = "<group>"; };
 		17D6EDCD2118DAD700F18F2B /* FAST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAST.swift; sourceTree = "<group>"; };
 		17EC48F0211A180600B32AE0 /* fast_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fast_1.png; path = "Bresenham-Line/fast_1.png"; sourceTree = "<group>"; };
@@ -92,10 +210,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1707B9922121F21A00FA1E70 /* EasyImagy.framework in Frameworks */,
-				1707B9942121F21A00FA1E70 /* Surge.framework in Frameworks */,
-				1707B9912121F1E500FA1E70 /* Surge.framework in Frameworks */,
-				1707B9902121F1E500FA1E70 /* EasyImagy.framework in Frameworks */,
+				17C181632137020F006FD01B /* EasyImagy.framework in Frameworks */,
+				17346E4C2137038B009CC5E9 /* Surge.framework in Frameworks */,
+				173BF3772136F79800EAC3B3 /* libtensorflow_framework.so in Frameworks */,
+				173BF3782136F79800EAC3B3 /* libtensorflow.so in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +244,20 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		17346E2F21370342009CC5E9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				17346E3F21370343009CC5E9 /* Surge.framework */,
+				17346E4121370343009CC5E9 /* SurgeTests-iOS.xctest */,
+				17346E4321370343009CC5E9 /* Surge.framework */,
+				17346E4521370343009CC5E9 /* SurgeTests-macOS.xctest */,
+				17346E4721370343009CC5E9 /* Surge.framework */,
+				17346E4921370343009CC5E9 /* SurgeTests-tvOS.xctest */,
+				17346E4B21370343009CC5E9 /* Surge.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		174FEB0E212F4E12004EA830 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,9 +271,25 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
+		17C18148213701EA006FD01B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				17C18152213701EB006FD01B /* EasyImagy.framework */,
+				17C18154213701EB006FD01B /* EasyImagyTests-iOS.xctest */,
+				17C18156213701EB006FD01B /* EasyImagy.framework */,
+				17C18158213701EB006FD01B /* EasyImagyTests.xctest */,
+				17C1815A213701EB006FD01B /* EasyImagy.framework */,
+				17C1815C213701EB006FD01B /* EasyImagyTests.xctest */,
+				17C1815E213701EB006FD01B /* EasyImagy.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		17EC4911211B6B3C00B32AE0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				173BF3752136F79700EAC3B3 /* libtensorflow_framework.so */,
+				173BF3762136F79800EAC3B3 /* libtensorflow.so */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -149,7 +297,8 @@
 		DBFC827F1E7C016D00A86F74 = {
 			isa = PBXGroup;
 			children = (
-				1707B98E2121F1E500FA1E70 /* EasyImagy.framework */,
+				17346E2E21370342009CC5E9 /* Surge.xcodeproj */,
+				17C18147213701EA006FD01B /* EasyImagy.xcodeproj */,
 				1707B98F2121F1E500FA1E70 /* Surge.framework */,
 				17EC48F0211A180600B32AE0 /* fast_1.png */,
 				17D6EDCB2118CB4B00F18F2B /* download.png */,
@@ -208,6 +357,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				17C181662137020F006FD01B /* PBXTargetDependency */,
+				17346E4F2137038B009CC5E9 /* PBXTargetDependency */,
 			);
 			name = "Bresenham-Line";
 			productName = "Bresenham-Line";
@@ -242,12 +393,123 @@
 			mainGroup = DBFC827F1E7C016D00A86F74;
 			productRefGroup = DBFC82891E7C016D00A86F74 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 17C18148213701EA006FD01B /* Products */;
+					ProjectRef = 17C18147213701EA006FD01B /* EasyImagy.xcodeproj */;
+				},
+				{
+					ProductGroup = 17346E2F21370342009CC5E9 /* Products */;
+					ProjectRef = 17346E2E21370342009CC5E9 /* Surge.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				DBFC82871E7C016D00A86F74 /* Bresenham-Line */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		17346E3F21370343009CC5E9 /* Surge.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Surge.framework;
+			remoteRef = 17346E3E21370343009CC5E9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		17346E4121370343009CC5E9 /* SurgeTests-iOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SurgeTests-iOS.xctest";
+			remoteRef = 17346E4021370343009CC5E9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		17346E4321370343009CC5E9 /* Surge.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Surge.framework;
+			remoteRef = 17346E4221370343009CC5E9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		17346E4521370343009CC5E9 /* SurgeTests-macOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SurgeTests-macOS.xctest";
+			remoteRef = 17346E4421370343009CC5E9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		17346E4721370343009CC5E9 /* Surge.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Surge.framework;
+			remoteRef = 17346E4621370343009CC5E9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		17346E4921370343009CC5E9 /* SurgeTests-tvOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SurgeTests-tvOS.xctest";
+			remoteRef = 17346E4821370343009CC5E9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		17346E4B21370343009CC5E9 /* Surge.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Surge.framework;
+			remoteRef = 17346E4A21370343009CC5E9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		17C18152213701EB006FD01B /* EasyImagy.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = EasyImagy.framework;
+			remoteRef = 17C18151213701EB006FD01B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		17C18154213701EB006FD01B /* EasyImagyTests-iOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "EasyImagyTests-iOS.xctest";
+			remoteRef = 17C18153213701EB006FD01B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		17C18156213701EB006FD01B /* EasyImagy.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = EasyImagy.framework;
+			remoteRef = 17C18155213701EB006FD01B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		17C18158213701EB006FD01B /* EasyImagyTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = EasyImagyTests.xctest;
+			remoteRef = 17C18157213701EB006FD01B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		17C1815A213701EB006FD01B /* EasyImagy.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = EasyImagy.framework;
+			remoteRef = 17C18159213701EB006FD01B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		17C1815C213701EB006FD01B /* EasyImagyTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = EasyImagyTests.xctest;
+			remoteRef = 17C1815B213701EB006FD01B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		17C1815E213701EB006FD01B /* EasyImagy.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = EasyImagy.framework;
+			remoteRef = 17C1815D213701EB006FD01B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		DBFC82861E7C016D00A86F74 /* Resources */ = {
@@ -294,6 +556,19 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		17346E4F2137038B009CC5E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Surge-macOS";
+			targetProxy = 17346E4E2137038B009CC5E9 /* PBXContainerItemProxy */;
+		};
+		17C181662137020F006FD01B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "EasyImagy-macOS";
+			targetProxy = 17C181652137020F006FD01B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		DBFC82911E7C016D00A86F74 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -335,7 +610,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_OPTIMIZATION_LEVEL = 1;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -351,7 +626,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Debug;
 		};
@@ -399,6 +674,7 @@
 		DBFC82981E7C016D00A86F74 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -408,7 +684,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = "Bresenham-Line/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks /Library/Developer/Toolchains/swift-tensorflow-DEVELOPMENT-2018-08-15-a.xctoolchain/usr/lib/swift/macosx";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mainasuk.Bresenham-Line2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -418,6 +694,7 @@
 		DBFC82991E7C016D00A86F74 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -427,7 +704,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = "Bresenham-Line/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks /Library/Developer/Toolchains/swift-tensorflow-DEVELOPMENT-2018-08-15-a.xctoolchain/usr/lib/swift/macosx";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mainasuk.Bresenham-Line2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;

@@ -1,15 +1,7 @@
-//
-//  ViewController.swift
-//  Bresenham-Line
-//
-//  Created by Cirno MainasuK on 2017-3-17.
-//  Copyright © 2017年 Cirno MainasuK. All rights reserved.
-//
-
 import Cocoa
 import EasyImagy
 import Foundation
-
+import TensorFlow
 
 extension CMKViewController {
 
@@ -20,8 +12,8 @@ extension CMKViewController {
         let y_0 = Float(height / 2)
         let c = cos(angle)
         let s  = sin(angle)
-        for y in 0...height{
-            for x in 0...width{
+        for y in 0...height-1{
+            for x in 0...width-1{
                 let w1 = abs((Float(x)-x_0)*c + (Float(y)-y_0)*s)
                 let h1 = -(Float(x)-x_0)*s + (Float(y)-y_0)*c
                 if (w1 < Float(thickness / 2) && h1  > 0){
@@ -51,7 +43,8 @@ extension CMKViewController {
         
         
         for _ in 0...numTrain{
-            let angle = Float.pi*Float(2*arc4random() - 1)
+            let randomFloat = Float.random(in: 0..<1)
+            let angle = Float.pi*randomFloat
             trainAngles.append(angle)
             let image = generateTrainingImage(angle,width,height,thickness)
             trainImages.append(image)
@@ -59,11 +52,22 @@ extension CMKViewController {
         
        
         for _ in 0...numTest{
-            let angle = Float.pi*Float(2*arc4random() - 1)
+            let randomFloat = Float.random(in: 0..<1)
+            let angle = Float.pi*randomFloat
             testAngles.append(angle)
             let image = generateTrainingImage(angle,width,height,thickness)
             testImages.append(image)
         }
+        
+
+        
+        var x = Tensor<Float>([[1, 2], [3, 4]])
+        
+        for i in 1...5 {
+            x += x • x
+        }
+        
+        print(x)
 
     }
     

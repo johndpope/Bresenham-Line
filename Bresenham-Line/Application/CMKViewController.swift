@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  Bresenham-Line
-//
-//  Created by Cirno MainasuK on 2017-3-17.
-//  Copyright © 2017年 Cirno MainasuK. All rights reserved.
-//
-
 import Cocoa
 import EasyImagy
 
@@ -35,10 +27,11 @@ class CMKViewController: NSViewController {
     }
 
     lazy var penTipView: NSView = {
-        let view = NSView(frame: NSRect(origin: CGPoint.zero, size: CGSize(width: kPenTipWidth, height: kPenTipWidth)))
+        let kPenTipWidth2: Int = 2 * 5
+        let view = NSView(frame: NSRect(origin: CGPoint.zero, size: CGSize(width: kPenTipWidth2, height: kPenTipWidth2)))
         view.wantsLayer = true
         view.layer?.backgroundColor = NSColor.red.cgColor
-        view.layer?.cornerRadius = CGFloat(kPenTipWidth / 2)
+        view.layer?.cornerRadius = CGFloat(kPenTipWidth2 / 2)
 
         return view
     }()
