@@ -1,7 +1,23 @@
 import Cocoa
 import EasyImagy
 import Foundation
-import TensorFlow
+import Surge
+//import TensorFlow
+
+precedencegroup ExponentiationPrecedence {
+    associativity: right
+    higherThan: MultiplicationPrecedence
+}
+
+infix operator ** : ExponentiationPrecedence
+
+func ** (_ base: Double, _ exp: Double) -> Double {
+    return pow(base, exp)
+}
+
+func ** (_ base: Float, _ exp: Float) -> Float {
+    return pow(base, exp)
+}
 
 extension CMKViewController {
 
@@ -59,17 +75,177 @@ extension CMKViewController {
             testImages.append(image)
         }
         
-
+        // This creates a network with three layers of the following sizes(2 nodes, 8, 1).
+        // The input layer has no activation function, while the second two both use a sigmoid function.
+        let network = NeuralNetwork(layerStructure: [2, 8, 1], activationFunctions: [.none, .sigmoid, .sigmoid])
         
-        var x = Tensor<Float>([[1, 2], [3, 4]])
+        // We are going to train our network about the XOR operator.
+        let trainingData: [[Double]] = [[0, 1], [0, 0], [1, 1], [1, 0]]
+        let trainingResults: [[Double]] = [[1], [0], [0], [1]]
         
-        for i in 1...5 {
-            x += x • x
-        }
-        
-        print(x)
+        network.train(inputs: trainingData, targetOutputs: trainingResults, learningRate: 0.9)
+        let result = network.infer(input: [0, 1])
 
     }
+    // Returns encoded angle using specified method ("binned","scaled","cossin","gaussian")
+    func encodeAngle(_ angle:Float,_ method:String)->[Float]{
+        var X:[Float] = []
+        if (method == "binned"){ // 1-of-500 encoding
+            X = [Float](repeating: 0, count: 500 )
+            X[Int(round(250*(angle/Float.pi + 1)))%500] = 1
+        }else if (method == "gaussian"){ // Leaky binned encoding
+            
+            for i in 0...500{
+                 X.append(Float(i))
+            }
+           
+            let idx:Float = 250*(angle/Float.pi + 1)
+            let Y = X-idx
+//            X = exp(-Float.pi*(Y)**2.0) //TODO
+        }else if (method == "scaled"){ // Scaled to [-1,1] encoding
+            X = Array([angle/Float.pi])
+        }else if (method == "cossin"){ //Oxinabox's (cos,sin) encoding
+            X = Array([cos(angle),sin(angle)])
+        }
+        return X
+    }
+ 
+    
+    // Returns decoded angle using specified method
+    func decodeAngle(_ X:[Float],_ method:String)->Float{
+        var M:Float = 0
+        var angle:Float = 0
+        if (method == "binned") || (method == "gaussian"){ // 1-of-500 or gaussian encoding
+            M = X.max()!
+            for i in 0...X.count{
+                if abs(X[i]-M) < 1e-5{
+                    angle = Float.pi*Float(i/250) - Float.pi
+                }
+            }
+        // angle = pi*dot(array([i for i in range(500)]),X)/500  # Averaging
+        } else if (method == "scaled"){ // Scaled to [-1,1] encoding
+            angle = Float.pi*X[0]
+        }else if (method == "cossin"){ //# Oxinabox's (cos,sin) encoding
+            angle = atan2(X[1],X[0])
+        }
+        return angle
+    }
+    // Train and test neural network with specified angle encoding method
+   /* func testEncodingMethod(trainImages:[Image<RGBA<UInt8>>],trainAngles:[Float],testImages:[Image<RGBA<UInt8>>], testAngles:[Float], method:String, numIters:Int, alpha:Float = 0.01, alphaBias:Float = 0.0001, momentum:Float = 0.9, hiddenLayerSize:Int = 500){
+//        var numTrain,inLayerSize = shape(train_images)
+        var num_test = len(test_angles)
+        
+        if method == "binned"{
+           outLayerSize = 500
+        }else if method == "gaussian"{
+           outLayerSize = 500
+        }else if method == "scaled"{
+           outLayerSize = 1
+        }else if  method == "cossin"{
+           outLayerSize = 2
+        }
+        // Initial weights and biases
+        var IN_HID = rand(inLayerSize,hidLayerSize) - 0.5 // IN --> HID weights
+        var HID_OUT = rand(hid_layer_size,outLayerSize) - 0.5 // HID --> OUT weights
+        var BIAS1 = rand(hidLayerSize) - 0.5 // Bias for hidden layer
+        var BIAS2 = rand(outLayerSize) - 0.5 // Bias for output layer
+        
+        
+        // Train
+        for j in 0...numIters{
+            for i in 0...numTrain{
+                
+            }
+        }
+        
+        // Get training example
+        IN = train_images[i]
+        TARGET = encode_angle(train_angles[i],method)
+        
+        // Feed forward and compute error derivatives
+        HID = sigmoid(dot(IN,IN_HID)+BIAS1)
+        
+        if method == "binned" or method == "gaussian": // Use softmax
+        OUT = exp(clip(dot(HID,HID_OUT)+BIAS2,-100,100))
+        OUT = OUT/sum(OUT)
+        dACT2 = OUT - TARGET
+        elif method == "cossin" or method == "scaled": // Linear
+        OUT = dot(HID,HID_OUT)+BIAS2
+        dACT2 = OUT-TARGET
+        else:
+        print("Invalid encoding method")
+        
+        dHID_OUT = outer(HID,dACT2)
+        dACT1 = dot(dACT2,HID_OUT.T)*HID*(1-HID)
+        dIN_HID = outer(IN,dACT1)
+        dBIAS1 = dACT1
+        dBIAS2 = dACT2
+        
+        
+        // Update the weights
+        HID_OUT -= alpha*dHID_OUT
+        IN_HID -= alpha*dIN_HID
+        BIAS1 -= alpha_bias*dBIAS1
+        BIAS2 -= alpha_bias*dBIAS2
+        
+        // Test
+        test_errors = zeros(num_test)
+        angles = zeros(num_test)
+        target_angles = zeros(num_test)
+        accuracy_to_point001 = 0
+        accuracy_to_point01 = 0
+        accuracy_to_point1 = 0
+        
+        for i in 0...num_test{
+            // Get training example
+            IN = test_images[i]
+            target_angle = test_angles[i]
+            
+            // Feed forward
+            HID = sigmoid(dot(IN,IN_HID)+BIAS1)
+            
+            if (method == "binned") || method == "gaussian"{
+                OUT = exp(clip(dot(HID,HID_OUT)+BIAS2,-100,100))
+                OUT = OUT/sum(OUT)
+            }else if  (method == "cossin") || (method == "scaled"){
+                OUT = dot(HID,HID_OUT)+BIAS2
+            }
+            
+            
+            // Decode output
+            angle = decodeAngle(OUT,method)
+            
+            // Compute errors
+            error = abs(angle-target_angle)
+            test_errors[i] = error
+            angles[i] = angle
+            
+            target_angles[i] = target_angle
+            if error < 0.1{
+                accuracy_to_point1 += 1
+            }
+            if error < 0.01{
+                accuracy_to_point01 += 1
+            }
+            if error < 0.001{
+                accuracy_to_point001 += 1
+            }
+        }
+        
+        
+        
+        
+        // Compute and return results
+        accuracy_to_point1 = 100.0*accuracy_to_point1/num_test
+        accuracy_to_point01 = 100.0*accuracy_to_point01/num_test
+        accuracy_to_point001 = 100.0*accuracy_to_point001/num_test
+        
+        return mean(test_errors),median(test_errors),min(test_errors),max(test_errors),accuracy_to_point1,accuracy_to_point01,accuracy_to_point
+    }
+    
+*/
+    
+    
     
     
     func test(){

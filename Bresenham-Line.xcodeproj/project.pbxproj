@@ -29,6 +29,12 @@
 		174FEB17212F4E12004EA830 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB12212F4E12004EA830 /* AppDelegate.swift */; };
 		174FEB18212F4E12004EA830 /* CMKView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB13212F4E12004EA830 /* CMKView.swift */; };
 		174FEB1C212F4E8E004EA830 /* CMKViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB1B212F4E8E004EA830 /* CMKViewController.swift */; };
+		179A483821383B2E00E75A60 /* NeuralNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179A483221383B2E00E75A60 /* NeuralNetwork.swift */; };
+		179A483921383B2E00E75A60 /* Maths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179A483321383B2E00E75A60 /* Maths.swift */; };
+		179A483A21383B2E00E75A60 /* ActivationFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179A483421383B2E00E75A60 /* ActivationFunction.swift */; };
+		179A483B21383B2E00E75A60 /* DataNormalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179A483521383B2E00E75A60 /* DataNormalizer.swift */; };
+		179A483C21383B2E00E75A60 /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179A483621383B2E00E75A60 /* Layer.swift */; };
+		179A483D21383B2E00E75A60 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179A483721383B2E00E75A60 /* Node.swift */; };
 		17C181632137020F006FD01B /* EasyImagy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17C18156213701EB006FD01B /* EasyImagy.framework */; };
 		17C181642137020F006FD01B /* EasyImagy.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17C18156213701EB006FD01B /* EasyImagy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		17D20334212F619E00D92039 /* CMKViewController+Net.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB19212F4E31004EA830 /* CMKViewController+Net.swift */; };
@@ -194,6 +200,12 @@
 		174FEB13212F4E12004EA830 /* CMKView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMKView.swift; sourceTree = "<group>"; };
 		174FEB19212F4E31004EA830 /* CMKViewController+Net.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CMKViewController+Net.swift"; sourceTree = "<group>"; };
 		174FEB1B212F4E8E004EA830 /* CMKViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMKViewController.swift; sourceTree = "<group>"; };
+		179A483221383B2E00E75A60 /* NeuralNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeuralNetwork.swift; sourceTree = "<group>"; };
+		179A483321383B2E00E75A60 /* Maths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Maths.swift; sourceTree = "<group>"; };
+		179A483421383B2E00E75A60 /* ActivationFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivationFunction.swift; sourceTree = "<group>"; };
+		179A483521383B2E00E75A60 /* DataNormalizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataNormalizer.swift; sourceTree = "<group>"; };
+		179A483621383B2E00E75A60 /* Layer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
+		179A483721383B2E00E75A60 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		17C18147213701EA006FD01B /* EasyImagy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = EasyImagy.xcodeproj; path = ../EasyImagy/EasyImagy.xcodeproj; sourceTree = "<group>"; };
 		17D6EDCB2118CB4B00F18F2B /* download.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = download.png; path = "Bresenham-Line/download.png"; sourceTree = "<group>"; };
 		17D6EDCD2118DAD700F18F2B /* FAST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAST.swift; sourceTree = "<group>"; };
@@ -271,6 +283,27 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
+		179A483021383B2E00E75A60 /* NeuralNet */ = {
+			isa = PBXGroup;
+			children = (
+				179A483121383B2E00E75A60 /* Sources */,
+			);
+			path = NeuralNet;
+			sourceTree = "<group>";
+		};
+		179A483121383B2E00E75A60 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				179A483221383B2E00E75A60 /* NeuralNetwork.swift */,
+				179A483321383B2E00E75A60 /* Maths.swift */,
+				179A483421383B2E00E75A60 /* ActivationFunction.swift */,
+				179A483521383B2E00E75A60 /* DataNormalizer.swift */,
+				179A483621383B2E00E75A60 /* Layer.swift */,
+				179A483721383B2E00E75A60 /* Node.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 		17C18148213701EA006FD01B /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,6 +352,7 @@
 		DBFC828A1E7C016D00A86F74 /* Bresenham-Line */ = {
 			isa = PBXGroup;
 			children = (
+				179A483021383B2E00E75A60 /* NeuralNet */,
 				174FEB0E212F4E12004EA830 /* Application */,
 				170DED65212C9A63004BF4AE /* Extension */,
 				1707B9872121F1D100FA1E70 /* DFFT */,
@@ -535,6 +569,7 @@
 				174FEB1C212F4E8E004EA830 /* CMKViewController.swift in Sources */,
 				17D20334212F619E00D92039 /* CMKViewController+Net.swift in Sources */,
 				1707B98C2121F1D100FA1E70 /* TimeAxisWaveFormPlot.swift in Sources */,
+				179A483B21383B2E00E75A60 /* DataNormalizer.swift in Sources */,
 				170DED6D212C9A64004BF4AE /* CMKView+Mouse.swift in Sources */,
 				170DED6C212C9A64004BF4AE /* ConsolePrint.swift in Sources */,
 				174FEB14212F4E12004EA830 /* CMKMouseTrackDelegate.swift in Sources */,
@@ -542,13 +577,18 @@
 				1707B98B2121F1D100FA1E70 /* ImageToSpectrumByFFT.swift in Sources */,
 				174FEB15212F4E12004EA830 /* CMKWindowController.swift in Sources */,
 				170DED64212C9967004BF4AE /* FAST+segments.swift in Sources */,
+				179A483921383B2E00E75A60 /* Maths.swift in Sources */,
 				832A051B1F2C180D00189151 /* Bresenham.swift in Sources */,
 				17D6EDCE2118DAD700F18F2B /* FAST.swift in Sources */,
 				170DED70212C9A64004BF4AE /* CGPoint+Hashable.swift in Sources */,
 				174FEB18212F4E12004EA830 /* CMKView.swift in Sources */,
 				170DED71212C9A64004BF4AE /* CGPoint+Extension.swift in Sources */,
 				170DED6E212C9A64004BF4AE /* NSPoint.swift in Sources */,
+				179A483A21383B2E00E75A60 /* ActivationFunction.swift in Sources */,
+				179A483D21383B2E00E75A60 /* Node.swift in Sources */,
 				170DED6F212C9A64004BF4AE /* Int.swift in Sources */,
+				179A483821383B2E00E75A60 /* NeuralNetwork.swift in Sources */,
+				179A483C21383B2E00E75A60 /* Layer.swift in Sources */,
 				174FEB16212F4E12004EA830 /* CMKWindow.swift in Sources */,
 				1707B98D2121F1D100FA1E70 /* TimeAxisWaveFormGenerate.swift in Sources */,
 			);
@@ -609,8 +649,9 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 1;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -626,7 +667,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -657,7 +698,9 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -667,7 +710,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Release;
 		};
@@ -683,6 +727,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				INFOPLIST_FILE = "Bresenham-Line/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks /Library/Developer/Toolchains/swift-tensorflow-DEVELOPMENT-2018-08-15-a.xctoolchain/usr/lib/swift/macosx";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mainasuk.Bresenham-Line2";
@@ -703,6 +748,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				INFOPLIST_FILE = "Bresenham-Line/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks /Library/Developer/Toolchains/swift-tensorflow-DEVELOPMENT-2018-08-15-a.xctoolchain/usr/lib/swift/macosx";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mainasuk.Bresenham-Line2";

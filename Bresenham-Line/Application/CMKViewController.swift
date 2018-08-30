@@ -1,6 +1,6 @@
 import Cocoa
 import EasyImagy
-
+//import TensorFlow
 
 class CMKViewController: NSViewController {
 
@@ -9,7 +9,8 @@ class CMKViewController: NSViewController {
     @IBOutlet weak var mouseLocationLabel: NSTextField! {
         didSet { mouseLocationLabel.font = NSFont.monospacedDigitSystemFont(ofSize: mouseLocationLabel.font!.pointSize, weight: NSFontWeightRegular) }
     }
-
+//    var xt = Tensor<Float>([[1, 2], [3, 4]])
+    
     static let kPenTipWidth: Int = 2 * 5
 
     var points:[CGPoint] = []{
