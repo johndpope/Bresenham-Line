@@ -7,21 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1702281721383EBD005452BB /* NeuralNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1702281121383EBC005452BB /* NeuralNetwork.swift */; };
-		1702281821383EBD005452BB /* Maths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1702281221383EBC005452BB /* Maths.swift */; };
-		1702281921383EBD005452BB /* ActivationFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1702281321383EBC005452BB /* ActivationFunction.swift */; };
-		1702281A21383EBD005452BB /* DataNormalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1702281421383EBC005452BB /* DataNormalizer.swift */; };
-		1702281B21383EBD005452BB /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1702281521383EBC005452BB /* Layer.swift */; };
-		1702281C21383EBD005452BB /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1702281621383EBC005452BB /* Node.swift */; };
 		1707B98B2121F1D100FA1E70 /* ImageToSpectrumByFFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1707B9882121F1D100FA1E70 /* ImageToSpectrumByFFT.swift */; };
 		1707B98C2121F1D100FA1E70 /* TimeAxisWaveFormPlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1707B9892121F1D100FA1E70 /* TimeAxisWaveFormPlot.swift */; };
 		1707B98D2121F1D100FA1E70 /* TimeAxisWaveFormGenerate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1707B98A2121F1D100FA1E70 /* TimeAxisWaveFormGenerate.swift */; };
-		1707B9902121F1E500FA1E70 /* EasyImagy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1707B98E2121F1E500FA1E70 /* EasyImagy.framework */; };
-		1707B9912121F1E500FA1E70 /* Surge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1707B98F2121F1E500FA1E70 /* Surge.framework */; };
-		1707B9922121F21A00FA1E70 /* EasyImagy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1707B98E2121F1E500FA1E70 /* EasyImagy.framework */; };
-		1707B9932121F21A00FA1E70 /* EasyImagy.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1707B98E2121F1E500FA1E70 /* EasyImagy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1707B9942121F21A00FA1E70 /* Surge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1707B98F2121F1E500FA1E70 /* Surge.framework */; };
-		1707B9952121F21A00FA1E70 /* Surge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1707B98F2121F1E500FA1E70 /* Surge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		170DED62212C94D5004BF4AE /* Bresenham+Segments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DED61212C94D4004BF4AE /* Bresenham+Segments.swift */; };
 		170DED64212C9967004BF4AE /* FAST+segments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DED63212C9967004BF4AE /* FAST+segments.swift */; };
 		170DED6C212C9A64004BF4AE /* ConsolePrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DED66212C9A63004BF4AE /* ConsolePrint.swift */; };
@@ -37,7 +25,27 @@
 		174FEB17212F4E12004EA830 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB12212F4E12004EA830 /* AppDelegate.swift */; };
 		174FEB18212F4E12004EA830 /* CMKView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB13212F4E12004EA830 /* CMKView.swift */; };
 		174FEB1C212F4E8E004EA830 /* CMKViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB1B212F4E8E004EA830 /* CMKViewController.swift */; };
+		176E2943213F12A7000156B7 /* Gzip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 176E2932213F129E000156B7 /* Gzip.framework */; };
+		176E2957213F140C000156B7 /* InputLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176E2945213F140C000156B7 /* InputLayer.swift */; };
+		176E2958213F140C000156B7 /* OutputLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176E2946213F140C000156B7 /* OutputLayer.swift */; };
+		176E2959213F140C000156B7 /* OneHotDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176E2947213F140C000156B7 /* OneHotDecode.swift */; };
+		176E295A213F140C000156B7 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176E2948213F140C000156B7 /* Test.swift */; };
+		176E295B213F140C000156B7 /* NoiseReflectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176E2949213F140C000156B7 /* NoiseReflectable.swift */; };
+		176E295D213F140C000156B7 /* NoiseDataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176E294B213F140C000156B7 /* NoiseDataset.swift */; };
+		176E295E213F140C000156B7 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176E294C213F140C000156B7 /* Network.swift */; };
+		176E295F213F140C000156B7 /* learnMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176E294D213F140C000156B7 /* learnMethods.swift */; };
+		176E2960213F140C000156B7 /* Mnist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176E294E213F140C000156B7 /* Mnist.swift */; };
+		176E2961213F140C000156B7 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176E294F213F140C000156B7 /* util.swift */; };
+		176E2962213F140C000156B7 /* HiddenLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176E2950213F140C000156B7 /* HiddenLayer.swift */; };
+		176E2963213F140C000156B7 /* HiddenLayer3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176E2951213F140C000156B7 /* HiddenLayer3.swift */; };
+		176E2964213F140C000156B7 /* MnistReflectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176E2952213F140C000156B7 /* MnistReflectable.swift */; };
+		176E2965213F140C000156B7 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176E2953213F140C000156B7 /* Utils.swift */; };
+		176E2966213F140C000156B7 /* MNISTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176E2954213F140C000156B7 /* MNISTManager.swift */; };
+		176E2967213F140C000156B7 /* SeconnTestReflectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176E2955213F140C000156B7 /* SeconnTestReflectable.swift */; };
+		176E2968213F140C000156B7 /* HiddenLayer2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176E2956213F140C000156B7 /* HiddenLayer2.swift */; };
 		17D20334212F619E00D92039 /* CMKViewController+Net.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB19212F4E31004EA830 /* CMKViewController+Net.swift */; };
+		17D601E3213EFD0500EA53F9 /* EasyImagy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D601E1213EFD0400EA53F9 /* EasyImagy.framework */; };
+		17D60286213F031D00EA53F9 /* Surge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D6027B213F030C00EA53F9 /* Surge.framework */; };
 		17D6EDCC2118CB4B00F18F2B /* download.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D6EDCB2118CB4B00F18F2B /* download.png */; };
 		17D6EDCE2118DAD700F18F2B /* FAST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D6EDCD2118DAD700F18F2B /* FAST.swift */; };
 		17EC48F1211A180600B32AE0 /* fast_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 17EC48F0211A180600B32AE0 /* fast_1.png */; };
@@ -46,6 +54,107 @@
 		DBFC82931E7C016D00A86F74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBFC82911E7C016D00A86F74 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		176E2931213F129E000156B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 176E2927213F129D000156B7 /* Gzip.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2AE050881D4A2C070040E4C9;
+			remoteInfo = "Gzip macOS";
+		};
+		176E2933213F129E000156B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 176E2927213F129D000156B7 /* Gzip.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2AE050991D4A2DC30040E4C9;
+			remoteInfo = "Gzip iOS";
+		};
+		176E2935213F129E000156B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 176E2927213F129D000156B7 /* Gzip.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2A321EE71D4A6138002B0245;
+			remoteInfo = "Gzip watchOS";
+		};
+		176E2937213F129E000156B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 176E2927213F129D000156B7 /* Gzip.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2A321F071D4A635F002B0245;
+			remoteInfo = "Gzip tvOS";
+		};
+		176E2939213F129E000156B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 176E2927213F129D000156B7 /* Gzip.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2A58A7571B00F414005FBBC2;
+			remoteInfo = "Tests macOS";
+		};
+		176E293B213F129E000156B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 176E2927213F129D000156B7 /* Gzip.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2A58A77D1B00FBEF005FBBC2;
+			remoteInfo = "Tests iOS";
+		};
+		17D60276213F030C00EA53F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17D6026C213F030B00EA53F9 /* Surge.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8A1E1AA19917A79009735E2;
+			remoteInfo = "Surge-iOS";
+		};
+		17D60278213F030C00EA53F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17D6026C213F030B00EA53F9 /* Surge.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F84A6AAE19A9A72F007B53E1;
+			remoteInfo = "SurgeTests-iOS";
+		};
+		17D6027A213F030C00EA53F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17D6026C213F030B00EA53F9 /* Surge.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 614AD31F1FC0AD99002BFE1C;
+			remoteInfo = "Surge-macOS";
+		};
+		17D6027C213F030C00EA53F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17D6026C213F030B00EA53F9 /* Surge.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 614AD3271FC0AD99002BFE1C;
+			remoteInfo = "SurgeTests-macOS";
+		};
+		17D6027E213F030C00EA53F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17D6026C213F030B00EA53F9 /* Surge.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 614AD3511FC0B001002BFE1C;
+			remoteInfo = "Surge-tvOS";
+		};
+		17D60280213F030C00EA53F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17D6026C213F030B00EA53F9 /* Surge.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 614AD3591FC0B001002BFE1C;
+			remoteInfo = "SurgeTests-tvOS";
+		};
+		17D60282213F030C00EA53F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17D6026C213F030B00EA53F9 /* Surge.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 614AD3821FC0B125002BFE1C;
+			remoteInfo = "Surge-watchOS";
+		};
+		17D60284213F031400EA53F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17D6026C213F030B00EA53F9 /* Surge.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 614AD31E1FC0AD99002BFE1C;
+			remoteInfo = "Surge-macOS";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		1707B9962121F21A00FA1E70 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -53,8 +162,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1707B9932121F21A00FA1E70 /* EasyImagy.framework in Embed Frameworks */,
-				1707B9952121F21A00FA1E70 /* Surge.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -62,17 +169,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1702281121383EBC005452BB /* NeuralNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeuralNetwork.swift; sourceTree = "<group>"; };
-		1702281221383EBC005452BB /* Maths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Maths.swift; sourceTree = "<group>"; };
-		1702281321383EBC005452BB /* ActivationFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivationFunction.swift; sourceTree = "<group>"; };
-		1702281421383EBC005452BB /* DataNormalizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataNormalizer.swift; sourceTree = "<group>"; };
-		1702281521383EBC005452BB /* Layer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
-		1702281621383EBC005452BB /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		1707B9882121F1D100FA1E70 /* ImageToSpectrumByFFT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageToSpectrumByFFT.swift; sourceTree = "<group>"; };
 		1707B9892121F1D100FA1E70 /* TimeAxisWaveFormPlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAxisWaveFormPlot.swift; sourceTree = "<group>"; };
 		1707B98A2121F1D100FA1E70 /* TimeAxisWaveFormGenerate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAxisWaveFormGenerate.swift; sourceTree = "<group>"; };
-		1707B98E2121F1E500FA1E70 /* EasyImagy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EasyImagy.framework; path = Carthage/Build/Mac/EasyImagy.framework; sourceTree = "<group>"; };
-		1707B98F2121F1E500FA1E70 /* Surge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Surge.framework; path = Carthage/Build/Mac/Surge.framework; sourceTree = "<group>"; };
 		170DED61212C94D4004BF4AE /* Bresenham+Segments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bresenham+Segments.swift"; sourceTree = "<group>"; };
 		170DED63212C9967004BF4AE /* FAST+segments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FAST+segments.swift"; sourceTree = "<group>"; };
 		170DED66212C9A63004BF4AE /* ConsolePrint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsolePrint.swift; sourceTree = "<group>"; };
@@ -89,6 +188,26 @@
 		174FEB13212F4E12004EA830 /* CMKView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMKView.swift; sourceTree = "<group>"; };
 		174FEB19212F4E31004EA830 /* CMKViewController+Net.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CMKViewController+Net.swift"; sourceTree = "<group>"; };
 		174FEB1B212F4E8E004EA830 /* CMKViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMKViewController.swift; sourceTree = "<group>"; };
+		176E2927213F129D000156B7 /* Gzip.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Gzip.xcodeproj; path = Carthage/Checkouts/GzipSwift/Gzip.xcodeproj; sourceTree = "<group>"; };
+		176E2945213F140C000156B7 /* InputLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputLayer.swift; sourceTree = "<group>"; };
+		176E2946213F140C000156B7 /* OutputLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputLayer.swift; sourceTree = "<group>"; };
+		176E2947213F140C000156B7 /* OneHotDecode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneHotDecode.swift; sourceTree = "<group>"; };
+		176E2948213F140C000156B7 /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		176E2949213F140C000156B7 /* NoiseReflectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoiseReflectable.swift; sourceTree = "<group>"; };
+		176E294B213F140C000156B7 /* NoiseDataset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoiseDataset.swift; sourceTree = "<group>"; };
+		176E294C213F140C000156B7 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		176E294D213F140C000156B7 /* learnMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = learnMethods.swift; sourceTree = "<group>"; };
+		176E294E213F140C000156B7 /* Mnist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mnist.swift; sourceTree = "<group>"; };
+		176E294F213F140C000156B7 /* util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
+		176E2950213F140C000156B7 /* HiddenLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiddenLayer.swift; sourceTree = "<group>"; };
+		176E2951213F140C000156B7 /* HiddenLayer3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiddenLayer3.swift; sourceTree = "<group>"; };
+		176E2952213F140C000156B7 /* MnistReflectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MnistReflectable.swift; sourceTree = "<group>"; };
+		176E2953213F140C000156B7 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		176E2954213F140C000156B7 /* MNISTManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNISTManager.swift; sourceTree = "<group>"; };
+		176E2955213F140C000156B7 /* SeconnTestReflectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeconnTestReflectable.swift; sourceTree = "<group>"; };
+		176E2956213F140C000156B7 /* HiddenLayer2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiddenLayer2.swift; sourceTree = "<group>"; };
+		17D601E1213EFD0400EA53F9 /* EasyImagy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EasyImagy.framework; path = Carthage/Build/Mac/EasyImagy.framework; sourceTree = "<group>"; };
+		17D6026C213F030B00EA53F9 /* Surge.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Surge.xcodeproj; path = Carthage/Checkouts/Surge/Surge.xcodeproj; sourceTree = "<group>"; };
 		17D6EDCB2118CB4B00F18F2B /* download.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = download.png; path = "Bresenham-Line/download.png"; sourceTree = "<group>"; };
 		17D6EDCD2118DAD700F18F2B /* FAST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAST.swift; sourceTree = "<group>"; };
 		17EC48F0211A180600B32AE0 /* fast_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fast_1.png; path = "Bresenham-Line/fast_1.png"; sourceTree = "<group>"; };
@@ -104,37 +223,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1707B9922121F21A00FA1E70 /* EasyImagy.framework in Frameworks */,
-				1707B9942121F21A00FA1E70 /* Surge.framework in Frameworks */,
-				1707B9912121F1E500FA1E70 /* Surge.framework in Frameworks */,
-				1707B9902121F1E500FA1E70 /* EasyImagy.framework in Frameworks */,
+				176E2943213F12A7000156B7 /* Gzip.framework in Frameworks */,
+				17D60286213F031D00EA53F9 /* Surge.framework in Frameworks */,
+				17D601E3213EFD0500EA53F9 /* EasyImagy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1702280F21383EBC005452BB /* NeuralNet */ = {
-			isa = PBXGroup;
-			children = (
-				1702281021383EBC005452BB /* Sources */,
-			);
-			path = NeuralNet;
-			sourceTree = "<group>";
-		};
-		1702281021383EBC005452BB /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				1702281121383EBC005452BB /* NeuralNetwork.swift */,
-				1702281221383EBC005452BB /* Maths.swift */,
-				1702281321383EBC005452BB /* ActivationFunction.swift */,
-				1702281421383EBC005452BB /* DataNormalizer.swift */,
-				1702281521383EBC005452BB /* Layer.swift */,
-				1702281621383EBC005452BB /* Node.swift */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
 		1707B9872121F1D100FA1E70 /* DFFT */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +269,57 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
+		176E2928213F129D000156B7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				176E2932213F129E000156B7 /* Gzip.framework */,
+				176E2934213F129E000156B7 /* Gzip.framework */,
+				176E2936213F129E000156B7 /* Gzip.framework */,
+				176E2938213F129E000156B7 /* Gzip.framework */,
+				176E293A213F129E000156B7 /* Tests macOS.xctest */,
+				176E293C213F129E000156B7 /* Tests iOS.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		176E2944213F140C000156B7 /* Seconn */ = {
+			isa = PBXGroup;
+			children = (
+				176E2945213F140C000156B7 /* InputLayer.swift */,
+				176E2946213F140C000156B7 /* OutputLayer.swift */,
+				176E2947213F140C000156B7 /* OneHotDecode.swift */,
+				176E2948213F140C000156B7 /* Test.swift */,
+				176E2949213F140C000156B7 /* NoiseReflectable.swift */,
+				176E294B213F140C000156B7 /* NoiseDataset.swift */,
+				176E294C213F140C000156B7 /* Network.swift */,
+				176E294D213F140C000156B7 /* learnMethods.swift */,
+				176E294E213F140C000156B7 /* Mnist.swift */,
+				176E294F213F140C000156B7 /* util.swift */,
+				176E2950213F140C000156B7 /* HiddenLayer.swift */,
+				176E2951213F140C000156B7 /* HiddenLayer3.swift */,
+				176E2952213F140C000156B7 /* MnistReflectable.swift */,
+				176E2953213F140C000156B7 /* Utils.swift */,
+				176E2954213F140C000156B7 /* MNISTManager.swift */,
+				176E2955213F140C000156B7 /* SeconnTestReflectable.swift */,
+				176E2956213F140C000156B7 /* HiddenLayer2.swift */,
+			);
+			path = Seconn;
+			sourceTree = "<group>";
+		};
+		17D6026D213F030B00EA53F9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				17D60277213F030C00EA53F9 /* Surge.framework */,
+				17D60279213F030C00EA53F9 /* SurgeTests-iOS.xctest */,
+				17D6027B213F030C00EA53F9 /* Surge.framework */,
+				17D6027D213F030C00EA53F9 /* SurgeTests-macOS.xctest */,
+				17D6027F213F030C00EA53F9 /* Surge.framework */,
+				17D60281213F030C00EA53F9 /* SurgeTests-tvOS.xctest */,
+				17D60283213F030C00EA53F9 /* Surge.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		17EC4911211B6B3C00B32AE0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,8 +330,9 @@
 		DBFC827F1E7C016D00A86F74 = {
 			isa = PBXGroup;
 			children = (
-				1707B98E2121F1E500FA1E70 /* EasyImagy.framework */,
-				1707B98F2121F1E500FA1E70 /* Surge.framework */,
+				176E2927213F129D000156B7 /* Gzip.xcodeproj */,
+				17D6026C213F030B00EA53F9 /* Surge.xcodeproj */,
+				17D601E1213EFD0400EA53F9 /* EasyImagy.framework */,
 				17EC48F0211A180600B32AE0 /* fast_1.png */,
 				17D6EDCB2118CB4B00F18F2B /* download.png */,
 				DBFC828A1E7C016D00A86F74 /* Bresenham-Line */,
@@ -203,7 +352,7 @@
 		DBFC828A1E7C016D00A86F74 /* Bresenham-Line */ = {
 			isa = PBXGroup;
 			children = (
-				1702280F21383EBC005452BB /* NeuralNet */,
+				176E2944213F140C000156B7 /* Seconn */,
 				174FEB0E212F4E12004EA830 /* Application */,
 				170DED65212C9A63004BF4AE /* Extension */,
 				1707B9872121F1D100FA1E70 /* DFFT */,
@@ -242,6 +391,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				17D60285213F031400EA53F9 /* PBXTargetDependency */,
 			);
 			name = "Bresenham-Line";
 			productName = "Bresenham-Line";
@@ -276,12 +426,116 @@
 			mainGroup = DBFC827F1E7C016D00A86F74;
 			productRefGroup = DBFC82891E7C016D00A86F74 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 176E2928213F129D000156B7 /* Products */;
+					ProjectRef = 176E2927213F129D000156B7 /* Gzip.xcodeproj */;
+				},
+				{
+					ProductGroup = 17D6026D213F030B00EA53F9 /* Products */;
+					ProjectRef = 17D6026C213F030B00EA53F9 /* Surge.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				DBFC82871E7C016D00A86F74 /* Bresenham-Line */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		176E2932213F129E000156B7 /* Gzip.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Gzip.framework;
+			remoteRef = 176E2931213F129E000156B7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		176E2934213F129E000156B7 /* Gzip.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Gzip.framework;
+			remoteRef = 176E2933213F129E000156B7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		176E2936213F129E000156B7 /* Gzip.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Gzip.framework;
+			remoteRef = 176E2935213F129E000156B7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		176E2938213F129E000156B7 /* Gzip.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Gzip.framework;
+			remoteRef = 176E2937213F129E000156B7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		176E293A213F129E000156B7 /* Tests macOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Tests macOS.xctest";
+			remoteRef = 176E2939213F129E000156B7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		176E293C213F129E000156B7 /* Tests iOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Tests iOS.xctest";
+			remoteRef = 176E293B213F129E000156B7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		17D60277213F030C00EA53F9 /* Surge.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Surge.framework;
+			remoteRef = 17D60276213F030C00EA53F9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		17D60279213F030C00EA53F9 /* SurgeTests-iOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SurgeTests-iOS.xctest";
+			remoteRef = 17D60278213F030C00EA53F9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		17D6027B213F030C00EA53F9 /* Surge.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Surge.framework;
+			remoteRef = 17D6027A213F030C00EA53F9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		17D6027D213F030C00EA53F9 /* SurgeTests-macOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SurgeTests-macOS.xctest";
+			remoteRef = 17D6027C213F030C00EA53F9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		17D6027F213F030C00EA53F9 /* Surge.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Surge.framework;
+			remoteRef = 17D6027E213F030C00EA53F9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		17D60281213F030C00EA53F9 /* SurgeTests-tvOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SurgeTests-tvOS.xctest";
+			remoteRef = 17D60280213F030C00EA53F9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		17D60283213F030C00EA53F9 /* Surge.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Surge.framework;
+			remoteRef = 17D60282213F030C00EA53F9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		DBFC82861E7C016D00A86F74 /* Resources */ = {
@@ -305,34 +559,53 @@
 				174FEB17212F4E12004EA830 /* AppDelegate.swift in Sources */,
 				170DED62212C94D5004BF4AE /* Bresenham+Segments.swift in Sources */,
 				174FEB1C212F4E8E004EA830 /* CMKViewController.swift in Sources */,
+				176E2967213F140C000156B7 /* SeconnTestReflectable.swift in Sources */,
+				176E2961213F140C000156B7 /* util.swift in Sources */,
+				176E2960213F140C000156B7 /* Mnist.swift in Sources */,
+				176E295E213F140C000156B7 /* Network.swift in Sources */,
 				17D20334212F619E00D92039 /* CMKViewController+Net.swift in Sources */,
+				176E295F213F140C000156B7 /* learnMethods.swift in Sources */,
 				1707B98C2121F1D100FA1E70 /* TimeAxisWaveFormPlot.swift in Sources */,
-				1702281A21383EBD005452BB /* DataNormalizer.swift in Sources */,
+				176E2963213F140C000156B7 /* HiddenLayer3.swift in Sources */,
 				170DED6D212C9A64004BF4AE /* CMKView+Mouse.swift in Sources */,
+				176E2965213F140C000156B7 /* Utils.swift in Sources */,
+				176E2959213F140C000156B7 /* OneHotDecode.swift in Sources */,
 				170DED6C212C9A64004BF4AE /* ConsolePrint.swift in Sources */,
 				174FEB14212F4E12004EA830 /* CMKMouseTrackDelegate.swift in Sources */,
+				176E2966213F140C000156B7 /* MNISTManager.swift in Sources */,
+				176E295D213F140C000156B7 /* NoiseDataset.swift in Sources */,
+				176E2962213F140C000156B7 /* HiddenLayer.swift in Sources */,
 				174FEB0D212DE550004EA830 /* Image+LBP.swift in Sources */,
 				1707B98B2121F1D100FA1E70 /* ImageToSpectrumByFFT.swift in Sources */,
 				174FEB15212F4E12004EA830 /* CMKWindowController.swift in Sources */,
+				176E2964213F140C000156B7 /* MnistReflectable.swift in Sources */,
 				170DED64212C9967004BF4AE /* FAST+segments.swift in Sources */,
-				1702281821383EBD005452BB /* Maths.swift in Sources */,
+				176E2958213F140C000156B7 /* OutputLayer.swift in Sources */,
 				832A051B1F2C180D00189151 /* Bresenham.swift in Sources */,
 				17D6EDCE2118DAD700F18F2B /* FAST.swift in Sources */,
 				170DED70212C9A64004BF4AE /* CGPoint+Hashable.swift in Sources */,
 				174FEB18212F4E12004EA830 /* CMKView.swift in Sources */,
 				170DED71212C9A64004BF4AE /* CGPoint+Extension.swift in Sources */,
 				170DED6E212C9A64004BF4AE /* NSPoint.swift in Sources */,
-				1702281921383EBD005452BB /* ActivationFunction.swift in Sources */,
-				1702281C21383EBD005452BB /* Node.swift in Sources */,
+				176E2957213F140C000156B7 /* InputLayer.swift in Sources */,
 				170DED6F212C9A64004BF4AE /* Int.swift in Sources */,
-				1702281721383EBD005452BB /* NeuralNetwork.swift in Sources */,
-				1702281B21383EBD005452BB /* Layer.swift in Sources */,
+				176E295B213F140C000156B7 /* NoiseReflectable.swift in Sources */,
+				176E295A213F140C000156B7 /* Test.swift in Sources */,
 				174FEB16212F4E12004EA830 /* CMKWindow.swift in Sources */,
+				176E2968213F140C000156B7 /* HiddenLayer2.swift in Sources */,
 				1707B98D2121F1D100FA1E70 /* TimeAxisWaveFormGenerate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		17D60285213F031400EA53F9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Surge-macOS";
+			targetProxy = 17D60284213F031400EA53F9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		DBFC82911E7C016D00A86F74 /* Main.storyboard */ = {

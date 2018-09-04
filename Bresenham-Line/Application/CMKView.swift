@@ -34,11 +34,11 @@ extension NSImage {
     }
 }
 
-class Data{
+class DataView{
     var view:CMKView?
 }
 
-let data = Data()
+let data = DataView()
 
 class CMKView: NSView {
 

@@ -75,28 +75,88 @@ extension CMKViewController {
             testImages.append(image)
         }
         
-        // This creates a network with three layers of the following sizes(2 nodes, 8, 1).
-        // The input layer has no activation function, while the second two both use a sigmoid function.
-        let   network = NeuralNetwork(layerStructure: [2, 20, 1], activationFunctions: [.none, .sigmoid, .sigmoid])
-        
-        let trainingData: [[Double]] = [[0, 1], [0, 0], [1, 1], [1, 0]]
-        let trainingResults: [[Double]] = [[1], [0], [0], [1]]
-        
-        var lastRSS: Double = 1
-        let threshold: Double = 0.02
-        var count = 0
-        let maxIterations = 2000
-        
-        // Training
-        while lastRSS > threshold && count < maxIterations {
-            count += 1
+
+        do {
+            let  test = try SeconnTest()
             
-            network.train(inputs: trainingData, targetOutputs: trainingResults, learningRate: 0.9)
+            test.debugLevel = .info
             
-            lastRSS = network.rss(inputs: trainingData, targetOutputs: trainingResults)
-            print("lastRSS:",lastRSS)
+            let rateDefault: Float = 0.8
+            var rate: Float = rateDefault
+            var rateDecay: Float = 1.000
+            var skipper = 0
+            let skipValue = 10
+            
+            print("Rate: \(rateDefault)")
+            print("Rate decay: \(rateDecay)")
+            
+            func doTest(_ test: SeconnTest) {
+                if skipper == 0 {
+                    skipper = skipValue
+                    let t = test.test(batches: 0..<3)
+                    t.totalPerformance
+                    t.indexedPerformance
+                } else {
+                    skipper -= 1
+                    let t = test.test(batches: 0..<1)
+                    t.totalPerformance
+                    t.indexedPerformance
+                }
+            }
+            print("Using plain method")
+            for trainState in test.train().prefix(500).dropFirst(250) {
+                doLearn(test, state: trainState, rate: rate)
+                rate *= rateDecay
+                doTest(test)
+            }
+            
+            rate = 0.5
+            rateDecay = 0.995
+            
+            print("Rate: \(rateDefault)")
+            print("Rate decay: \(rateDecay)")
+            
+            if false {
+                print("Using plain method")
+                for trainState in test.train().prefix(250) {
+                    doLearn(test, state: trainState, rate: rate)
+                    rate *= rateDecay
+                    doTest(test)
+                }
+            }
+            
+//            test.neuralNetwork
+            print(test.neuralNetwork)
+            
+            /*:
+             Internally, this network is set to use 1000 neurons. Obviously,
+             you can't get high performance with binary step and such a little quantity
+             of neurons on MNIST dataset. But it also shows that it works, and doesn't
+             suffer from EC-saturation and value locking, which happen when using
+             Laplacian operator on common networks.
+             */
+            let testResult = test.test(batches: 0..<10)
+            
+            let trainPerformance = test.train().prefix(250).map { s in argmax(s.process()) == (try! oneHotDecode(s.value.output)) ? 1.0 : 0.0  }.average()
+            print("Train performance: \(trainPerformance)")
+            print("Test performance: \(testResult.totalPerformance)")
+            print("Test performance (indexed): \(testResult.indexedPerformance)")
+            
+            let target = test.dataset.testBatch(index: 0).1.map(argmax)
+            let result = test.batchCompute(inputBatch: test.dataset.testBatch(index: 0).0)
+            
+            print(zip(target, result).map { t,r in "\(t): \(argmax(r)) \(r)"}, separator: "\n")
             
         }
+        catch let error {
+            print(error.localizedDescription)
+            abort()
+        }
+        
+
+        
+
+      
     }
     // Returns encoded angle using specified method ("binned","scaled","cossin","gaussian")
     func encodeAngle(_ angle:Float,_ method:String)->[Float]{
@@ -141,19 +201,21 @@ extension CMKViewController {
         }
         return angle
     }
+    
+    /*
     // Train and test neural network with specified angle encoding method
-    /* func testEncodingMethod(trainImages:[Image<RGBA<UInt8>>],trainAngles:[Float],testImages:[Image<RGBA<UInt8>>], testAngles:[Float], method:String, numIters:Int, alpha:Float = 0.01, alphaBias:Float = 0.0001, momentum:Float = 0.9, hiddenLayerSize:Int = 500){
+     func testEncodingMethod(trainImages:[Image<RGBA<UInt8>>],trainAngles:[Float],testImages:[Image<RGBA<UInt8>>], testAngles:[Float], method:String, numIters:Int, alpha:Float = 0.01, alphaBias:Float = 0.0001, momentum:Float = 0.9, hiddenLayerSize:Int = 500){
      //        var numTrain,inLayerSize = shape(train_images)
-     var num_test = len(test_angles)
+     var num_test = testAngles.count
      
      if method == "binned"{
-     outLayerSize = 500
+        outLayerSize = 500
      }else if method == "gaussian"{
-     outLayerSize = 500
+        outLayerSize = 500
      }else if method == "scaled"{
-     outLayerSize = 1
+        outLayerSize = 1
      }else if  method == "cossin"{
-     outLayerSize = 2
+        outLayerSize = 2
      }
      // Initial weights and biases
      var IN_HID = rand(inLayerSize,hidLayerSize) - 0.5 // IN --> HID weights
@@ -164,9 +226,9 @@ extension CMKViewController {
      
      // Train
      for j in 0...numIters{
-     for i in 0...numTrain{
-     
-     }
+         for i in 0...numTrain{
+         
+         }
      }
      
      // Get training example
@@ -252,9 +314,9 @@ extension CMKViewController {
      accuracy_to_point001 = 100.0*accuracy_to_point001/num_test
      
      return mean(test_errors),median(test_errors),min(test_errors),max(test_errors),accuracy_to_point1,accuracy_to_point01,accuracy_to_point
-     }
+     }*/
      
-     */
+
     
     
     
