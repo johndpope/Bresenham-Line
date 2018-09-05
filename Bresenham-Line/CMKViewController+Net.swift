@@ -19,6 +19,7 @@ extension Image where Pixel == UInt8 {
 }
 
 
+
 extension CMKViewController {
     
     func generateTrainingImage(_ angle:Double,_ width:Int,_ height:Int,_ thickness:Double)->[Byte]{
@@ -62,6 +63,7 @@ extension CMKViewController {
         for _ in 0..<numTrain{
 
             let angle = Double.pi * Double.random(in: 0..<1)
+            //https://stats.stackexchange.com/questions/218407/encoding-angle-data-for-neural-network
             let encodedAngle = encodeAngle(angle,"binned")
 //            let encodedAngle = encodeAngle(angle,"gaussian")
 //             let encodedAngle = encodeAngle(angle,"gaussian")
@@ -83,7 +85,7 @@ extension CMKViewController {
         
 
         let trainImageData = trainImages.map{ return $0.map{ return   Double($0) / 255 }}
-        let network = Network(layerStructure: [500], learningRate: 0.01)
+        let network = Network(layerStructure: [1,500,1], learningRate: 0.01)
         network.train(inputs: trainImageData, expecteds: trainAngles, printError: true)
         let testImageData = testImages.map{ return $0.map{ return   Double($0) / 255 }}
         let (_, _, percentage) = network.validate(inputs: testImageData, expecteds: testAngles, accuracy: 0.95)
