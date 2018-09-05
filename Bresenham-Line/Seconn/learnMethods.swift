@@ -2,11 +2,11 @@ import Foundation
 
 
 let repeats = 1
-let learnCutoff: FloatType = 1.0
-let delearnCutoff: FloatType = 0.5
-let delearnRate: FloatType = 0.25
+let learnCutoff: Double = 1.0
+let delearnCutoff: Double = 0.5
+let delearnRate: Double = 0.25
 
-public func doLearn(_ test: SeconnTest, state: TrainStateProtocol, rate: FloatType) {
+public func doLearn(_ test: SeconnTest, state: TrainStateProtocol, rate: Double) {
     for _ in 0..<repeats {
      
         let output = state.process()
@@ -43,13 +43,13 @@ public func doLearn(_ test: SeconnTest, state: TrainStateProtocol, rate: FloatTy
 
 // Brains of network
 extension  SecoNetwork {
-    public func train(input: [FloatType], output: [FloatType], rateReduction: FloatType, inverse: Bool = false) {
-        let hiddenInput: [FloatType]
-        var hiddenIOs: [([FloatType], [FloatType])] = []
+    public func train(input: [Double], output: [Double], rateReduction: Double, inverse: Bool = false) {
+        let hiddenInput: [Double]
+        var hiddenIOs: [([Double], [Double])] = []
         
         hiddenInput = layers.first!.process(input: input)
         
-        let _ = layers.dropFirst().reduce(hiddenInput) { (lastOutput, layer) -> [FloatType] in
+        let _ = layers.dropFirst().reduce(hiddenInput) { (lastOutput, layer) -> [Double] in
             let output = layer.process(input: lastOutput)
             hiddenIOs.append((lastOutput, output))
             return output
@@ -70,14 +70,14 @@ extension  SecoNetwork {
     }
 }
 //extension OutputLayer: LearningLayer {
-//    mutating func learn(input: [FloatType], output: [FloatType], target: [FloatType], weightRate: FloatType, biasRate: FloatType) -> [FloatType] {
+//    mutating func learn(input: [Double], output: [Double], target: [Double], weightRate: Double, biasRate: Double) -> [Double] {
 //        return ceil(clip((reductionMatrixTransposed * SliceableMatrix(column: target))[column: 0], low: 0.0, high: 1.0))
 //    }
 //}
 
 
 /*
-public func doLearnMagic(_ test: SeconnTest, state: TrainStateProtocol, rate: FloatType) {
+public func doLearnMagic(_ test: SeconnTest, state: TrainStateProtocol, rate: Double) {
     for _ in 0..<repeats {
         let output = state.process()
         let outputIdx: Int = argmax(output)
@@ -89,7 +89,7 @@ public func doLearnMagic(_ test: SeconnTest, state: TrainStateProtocol, rate: Fl
         if outputIdx != targetIdx {
             let delearnTargets = output.enumerated().filter({ i,e in e > delearnCutoff && i != targetIdx })
             if delearnTargets.count != 0 {
-                var delearnVector: [FloatType] = Array(repeating: 0, count: 10)
+                var delearnVector: [Double] = Array(repeating: 0, count: 10)
                 for (i,_) in delearnTargets { delearnVector[i] = 1.0 }
                 test.neuralNetwork.train(input: state.value.input, output: delearnVector, rateReduction: rate*delearnRate, inverse: true)
             }

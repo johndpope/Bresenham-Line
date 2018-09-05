@@ -8,24 +8,17 @@
 import Foundation
 import Surge
 
-public func maxi(x: [Float]) -> Int {
-    var max: Float = 0.0
-    var index: vDSP_Length = vDSP_Length(0)
-    vDSP_maxvi(x, 1, &max, &index, vDSP_Length(x.count))
-    
-    return Int(index)
-}
 
-public func maxi(x: [Double]) -> Int {
+//public func maxi(x: [Double]) -> Int {
+//    var max: Double = 0.0
+//    var index: vDSP_Length = vDSP_Length(0)
+//    vDSP_maxviD(x, 1, &max, &index, vDSP_Length(x.count))
+//    return Int(index)
+//}
+
+
+public func argmax(_ x: [Double]) -> Int{
     var max: Double = 0.0
-    var index: vDSP_Length = vDSP_Length(0)
-    vDSP_maxviD(x, 1, &max, &index, vDSP_Length(x.count))
-    return Int(index)
-}
-
-
-public func argmax(_ x: [Float]) -> Int{
-    var max: Float = 0.0
     var index: vDSP_Length = vDSP_Length(0)
     vDSP_maxvi(x, 1, &max, &index, vDSP_Length(x.count))
     return Int(index)
@@ -37,7 +30,7 @@ public class SeconnTest {
 
     public let config: SecoNetworkConfiguration
 
-    public var detrainCoeff: FloatType
+    public var detrainCoeff: Double
 
     public var neuralNetwork: SecoNetwork
 
@@ -53,7 +46,7 @@ public class SeconnTest {
         case debug
     }
 
-    public func batchCompute(inputBatch: [[FloatType]]) -> [[FloatType]] {
+    public func batchCompute(inputBatch: [[Double]]) -> [[Double]] {
         let outputs = inputBatch.map { t in self.neuralNetwork.process(input: t) }
         return outputs
     }
@@ -63,16 +56,16 @@ public class SeconnTest {
     }
 
     public func test(batches: CountableRange<Int>) -> TestResults {
-        var totalPerf: FloatType = 0.0
+        var totalPerf: Double = 0.0
         let totalLabels = dataset.testBatch(index: 0).1[0].count
-        var indexedPerf: [FloatType] = Array(repeating: 0.0, count: totalLabels)
+        var indexedPerf: [Double] = Array(repeating: 0.0, count: totalLabels)
 
         for batchIdx in batches {
             let (testSet, testLabels) = dataset.testBatch(index: batchIdx)
 
             let outputs = batchCompute(inputBatch: testSet)
             let perf = performance(output: outputs.map(argmax), target: testLabels.map(argmax))
-            let indexed = (0..<totalLabels).map { (targetLabel: Int) -> FloatType in
+            let indexed = (0..<totalLabels).map { (targetLabel: Int) -> Double in
                 let batch = zip(outputs.map(argmax), testLabels.map(argmax)).filter { values in
                     values.1 == targetLabel
                 }
@@ -85,18 +78,18 @@ public class SeconnTest {
             indexedPerf = indexedPerf .+ indexed
             totalPerf += perf
         }
-        return TestResults(totalPerformance: totalPerf / FloatType(batches.count), indexedPerformance: indexedPerf / FloatType(batches.count))
+        return TestResults(totalPerformance: totalPerf / Double(batches.count), indexedPerformance: indexedPerf / Double(batches.count))
     }
 
     public struct TestResults {
-        public var totalPerformance: FloatType
-        public var indexedPerformance: [FloatType]
+        public var totalPerformance: Double
+        public var indexedPerformance: [Double]
     }
 
     fileprivate class TrainVars {
         let parent: SeconnTest
-        var batchSet: [[FloatType]] = []
-        var batchLabels: [[FloatType]] = []
+        var batchSet: [[Double]] = []
+        var batchLabels: [[Double]] = []
 
         var batchCount: Int { return parent.dataset.trainBatchCount }
         var samplesInBatch: Int { return batchSet.count }
@@ -127,7 +120,7 @@ public class SeconnTest {
             public let sample: Int
             public let current: Int
 
-            public var value: (input: [FloatType], output: [FloatType]) {
+            public var value: (input: [Double], output: [Double]) {
                 return (input: vars.batchSet[sample], output: vars.batchLabels[sample])
             }
 
@@ -141,11 +134,11 @@ public class SeconnTest {
                 self.vars = vars
             }
 
-            public func train(rate: FloatType) {
+            public func train(rate: Double) {
                 vars.parent.neuralNetwork.train(input: value.input, output: value.output, rateReduction: rate)
             }
 
-            public func process() -> [FloatType] {
+            public func process() -> [Double] {
                 return vars.parent.neuralNetwork.process(input: value.input)
             }
         }
@@ -236,15 +229,15 @@ public class SeconnTest {
             public var batch: Int { return trainState.batch }
             public var sample: Int { return trainState.sample }
             public var current: Int { return trainState.current }
-            public var value: (input: [FloatType], output: [FloatType]) { return trainState.value }
+            public var value: (input: [Double], output: [Double]) { return trainState.value }
 
             public let limitedCount: Int
 
-            public func train(rate: FloatType) {
+            public func train(rate: Double) {
                 trainState.train(rate: rate)
             }
 
-            public func process() -> [FloatType] {
+            public func process() -> [Double] {
                 return trainState.process()
             }
 
@@ -305,7 +298,7 @@ public class SeconnTest {
     }
 
     public init() throws {
-//        dataset = MnistDatasetStratified(internalDataset: try loadMnistDataset())
+
         dataset = try loadMnistDataset()
 
         detrainDataset = NoiseDataset(
@@ -324,7 +317,7 @@ public class SeconnTest {
 //            hiddenLayersSizes: [500, 500],
 //            hiddenLayersSizes: [500, 500, 500, 500],
 //            hiddenLayersSizes: [1000, 1000],
-            weightInitializer: { () -> FloatType in
+            weightInitializer: { () -> Double in
                 (Float(arc4random_uniform(UInt32.max)) / Float(UInt32.max) - 0.5) * 1.0
             },
             learningRateForWeights: 0.001,
@@ -341,10 +334,10 @@ public protocol TrainStateProtocol {
     var batch: Int { get }
     var sample: Int { get }
     var current: Int { get }
-    var value: (input: [FloatType], output: [FloatType]) { get }
+    var value: (input: [Double], output: [Double]) { get }
 
-    func train(rate: FloatType)
-    func process() -> [FloatType]
+    func train(rate: Double)
+    func process() -> [Double]
 }
 
 public protocol TrainSequenceProtocol: Sequence where Iterator: TrainIteratorProtocol {

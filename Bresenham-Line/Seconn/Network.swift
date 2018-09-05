@@ -8,10 +8,10 @@
 import Foundation
 import Surge
 
-public typealias FloatType = Float
+public typealias Double = Float
 
 public enum OneHotDecoderError: Error {
-    case invalidInput(value: [FloatType])
+    case invalidInput(value: [Double])
     
     public var localizedDescription: String {
         switch self {
@@ -21,7 +21,7 @@ public enum OneHotDecoderError: Error {
     }
 }
 
-public func oneHotDecode(_ a: [FloatType]) throws -> Int {
+public func oneHotDecode(_ a: [Double]) throws -> Int {
     for i in a.indices {
         if a[i] == 1.0 {
             return i
@@ -33,7 +33,7 @@ public func oneHotDecode(_ a: [FloatType]) throws -> Int {
 
 struct InputLayer {
     let inputSize: Int
-    let activationFunction: ([FloatType]) -> [FloatType] = { input in
+    let activationFunction: ([Double]) -> [Double] = { input in
         return ceil(clip(input, low: 0.0, high: 1.0))
     }
 }
@@ -43,14 +43,14 @@ extension InputLayer: Layer {
         return inputSize
     }
     
-    func process(input: [FloatType]) -> [FloatType] {
+    func process(input: [Double]) -> [Double] {
         return activationFunction(input)
     }
 }
 
 
 protocol Layer {
-    func process(input: [FloatType]) -> [FloatType]
+    func process(input: [Double]) -> [Double]
 
     var inputSize: Int { get }
 
@@ -58,7 +58,7 @@ protocol Layer {
 }
 
 protocol LearningLayer {
-    mutating func learn(input: [FloatType], output: [FloatType], target: [FloatType], weightRate: FloatType, biasRate: FloatType) -> [FloatType]
+    mutating func learn(input: [Double], output: [Double], target: [Double], weightRate: Double, biasRate: Double) -> [Double]
 }
 
 public struct SecoNetworkConfiguration {
@@ -67,10 +67,10 @@ public struct SecoNetworkConfiguration {
 
     var hiddenLayersSizes: [Int]
 
-    var weightInitializer: () -> FloatType
+    var weightInitializer: () -> Double
 
-    var learningRateForWeights: FloatType
-    var learningRateForBiases: FloatType
+    var learningRateForWeights: Double
+    var learningRateForBiases: Double
 }
 
 public class SecoNetwork {
@@ -105,8 +105,8 @@ public class SecoNetwork {
         layers.append(lastLayer)
     }
 
-    public func process(input: [FloatType]) -> [FloatType] {
-        return layers.reduce(input) { (lastOutput, layer) -> [FloatType] in
+    public func process(input: [Double]) -> [Double] {
+        return layers.reduce(input) { (lastOutput, layer) -> [Double] in
             layer.process(input: lastOutput)
         }
     }

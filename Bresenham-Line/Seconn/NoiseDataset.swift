@@ -22,13 +22,13 @@ extension NoiseDataset: CustomReflectable {
 public class NoiseDataset {
 
     public enum RandomFunction {
-        case linear(min: FloatType, max: FloatType)
-        case gaussian(mean: FloatType, sigma: FloatType)
+        case linear(min: Double, max: Double)
+        case gaussian(mean: Double, sigma: Double)
 
-        func f() -> FloatType {
+        func f() -> Double {
             switch self {
             case let .linear(min: min, max: max):
-                return min + (max - min) * (FloatType(arc4random_uniform(UInt32.max)) / FloatType(UInt32.max))
+                return min + (max - min) * (Double(arc4random_uniform(UInt32.max)) / Double(UInt32.max))
             case .gaussian:
                 fatalError("Not implemented")
             }
@@ -36,10 +36,10 @@ public class NoiseDataset {
     }
 
     public enum ValueType {
-        case single(value: [FloatType])
+        case single(value: [Double])
         case random(count: Int, RandomFunction)
 
-        func value() -> [FloatType] {
+        func value() -> [Double] {
             switch self {
             case let .single(v):
                 return v
@@ -49,10 +49,10 @@ public class NoiseDataset {
         }
     }
 
-    let inputBatches: [[[FloatType]]]
-    let outputBatches: [[[FloatType]]]
+    let inputBatches: [[[Double]]]
+    let outputBatches: [[[Double]]]
 
-    public func batch(index: Int) -> ([[FloatType]], [[FloatType]]) {
+    public func batch(index: Int) -> ([[Double]], [[Double]]) {
         return (inputBatches[index], outputBatches[index])
     }
 
@@ -65,14 +65,14 @@ public class NoiseDataset {
         self.outputBatches = NoiseDataset.generate(value: output, count: count, batchSize: batchSize)
     }
 
-    static func generate(value: ValueType, count: Int, batchSize: Int) -> [[[FloatType]]] {
+    static func generate(value: ValueType, count: Int, batchSize: Int) -> [[[Double]]] {
         precondition(count % batchSize == 0, "Count should be divisible by batchSize")
         let countInBatch = count / batchSize
 
-        var batches: [[[FloatType]]] = Array()
+        var batches: [[[Double]]] = Array()
 
         for _ in 0 ..< batchSize {
-            var batch: [[FloatType]] = Array()
+            var batch: [[Double]] = Array()
             batch.reserveCapacity(countInBatch)
 
             for _ in 0 ..< countInBatch {

@@ -4,35 +4,22 @@ import Foundation
 import Surge
 
 
-precedencegroup ExponentiationPrecedence {
-    associativity: right
-    higherThan: MultiplicationPrecedence
-}
 
-infix operator ** : ExponentiationPrecedence
-
-func ** (_ base: Double, _ exp: Double) -> Double {
-    return pow(base, exp)
-}
-
-func ** (_ base: Float, _ exp: Float) -> Float {
-    return pow(base, exp)
-}
 
 extension CMKViewController {
     
-    func generateTrainingImage(_ angle:Float,_ width:Int,_ height:Int,_ thickness:Double)->Image<RGBA<UInt8>>{
+    func generateTrainingImage(_ angle:Double,_ width:Int,_ height:Int,_ thickness:Double)->Image<RGBA<UInt8>>{
         var image = Image<RGBA<UInt8>>(width: width, height: height, pixel: RGBA.transparent)
         
-        let x_0 = Float(width / 2)
-        let y_0 = Float(height / 2)
+        let x_0 = Double(width / 2)
+        let y_0 = Double(height / 2)
         let c = cos(angle)
         let s  = sin(angle)
         for y in 0...height-1{
             for x in 0...width-1{
-                let w1 = abs((Float(x)-x_0)*c + (Float(y)-y_0)*s)
-                let h1 = -(Float(x)-x_0)*s + (Float(y)-y_0)*c
-                if (w1 < Float(thickness / 2) && h1  > 0){
+                let w1 = abs((Double(x)-x_0)*c + (Double(y)-y_0)*s)
+                let h1 = -(Double(x)-x_0)*s + (Double(y)-y_0)*c
+                if (w1 < Double(thickness / 2) && h1  > 0){
                     image[x,y] = RGBA(red: 255, green: 0, blue: 0, alpha: 127)
                 }
             }
@@ -47,20 +34,20 @@ extension CMKViewController {
         print("BEGIN TEST AND TRAIN DATA")
         let width = 100 // Image width
         let height = 100 // Image heigth
-        let thickness = 1.0 // Line thickness
+        let thickness:Double = 1.0 // Line thickness
         
         
         let numTrain = 1000
         let numTest = 1000
         var testImages:[Image<RGBA<UInt8>>] = []
-        var testAngles:[Float] = []
+        var testAngles:[Double] = []
         var trainImages:[Image<RGBA<UInt8>>] = []
-        var trainAngles:[Float] = []
+        var trainAngles:[Double] = []
         
         
         for _ in 0..<numTrain{
-            let randomFloat = Float.random(in: 0..<1)
-            let angle = Float.pi*randomFloat
+            let randomFloat = Double.random(in: 0..<1)
+            let angle = Double.pi*randomFloat
             trainAngles.append(angle)
             let image = generateTrainingImage(angle,width,height,thickness)
             trainImages.append(image)
@@ -68,8 +55,8 @@ extension CMKViewController {
         
         
         for _ in 0..<numTest{
-            let randomFloat = Float.random(in: 0..<1)
-            let angle = Float.pi*randomFloat
+            let randomFloat = Double.random(in: 0..<1)
+            let angle = Double.pi*randomFloat
             testAngles.append(angle)
             let image = generateTrainingImage(angle,width,height,thickness)
             testImages.append(image)
@@ -81,9 +68,9 @@ extension CMKViewController {
             
             test.debugLevel = .info
             
-            let rateDefault: Float = 0.8
-            var rate: Float = rateDefault
-            var rateDecay: Float = 1.000
+            let rateDefault: Double = 0.8
+            var rate: Double = rateDefault
+            var rateDecay: Double = 1.000
             var skipper = 0
             let skipValue = 10
             
@@ -144,27 +131,25 @@ extension CMKViewController {
         }
         
 
-        
-
-      
     }
+    
     // Returns encoded angle using specified method ("binned","scaled","cossin","gaussian")
-    func encodeAngle(_ angle:Float,_ method:String)->[Float]{
-        var X:[Float] = []
+    func encodeAngle(_ angle:Double,_ method:String)->[Float]{
+        var X:[Double] = []
         if (method == "binned"){ // 1-of-500 encoding
-            X = [Float](repeating: 0, count: 500 )
+            X = [Double](repeating: 0, count: 500 )
             X[Int(round(250*(angle/Float.pi + 1)))%500] = 1
         }else if (method == "gaussian"){ // Leaky binned encoding
             
             for i in 0...500{
-                X.append(Float(i))
+                X.append(Double(i))
             }
             
-            let idx:Float = 250*(angle/Float.pi + 1)
+            let idx:Double = 250*(angle/Double.pi + 1)
             let Y = X-idx
             //            X = exp(-Float.pi*(Y)**2.0) //TODO
         }else if (method == "scaled"){ // Scaled to [-1,1] encoding
-            X = Array([angle/Float.pi])
+            X = Array([angle/Double.pi])
         }else if (method == "cossin"){ //Oxinabox's (cos,sin) encoding
             X = Array([cos(angle),sin(angle)])
         }
@@ -173,19 +158,19 @@ extension CMKViewController {
     
     
     // Returns decoded angle using specified method
-    func decodeAngle(_ X:[Float],_ method:String)->Float{
-        var M:Float = 0
-        var angle:Float = 0
+    func decodeAngle(_ X:[Double],_ method:String)->Float{
+        var M:Double = 0
+        var angle:Double = 0
         if (method == "binned") || (method == "gaussian"){ // 1-of-500 or gaussian encoding
             M = X.max()!
             for i in 0...X.count{
                 if abs(X[i]-M) < 1e-5{
-                    angle = Float.pi*Float(i/250) - Float.pi
+                    angle = Double.pi*Float(i/250) - Float.pi
                 }
             }
             // angle = pi*dot(array([i for i in range(500)]),X)/500  # Averaging
         } else if (method == "scaled"){ // Scaled to [-1,1] encoding
-            angle = Float.pi*X[0]
+            angle = Double.pi*X[0]
         }else if (method == "cossin"){ //# Oxinabox's (cos,sin) encoding
             angle = atan2(X[1],X[0])
         }

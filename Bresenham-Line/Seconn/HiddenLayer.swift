@@ -12,13 +12,13 @@ import Surge
 /// prerequisite, since it controls the activation threshold. Without appropriate bias learnint
 /// rate, the output becomes saturated.
 struct HiddenLayer {
-    var weights: SliceableMatrix<FloatType>
-    var biases: [FloatType]
-    let activationFunction: ([FloatType]) -> [FloatType] = { input in
+    var weights: SliceableMatrix<Double>
+    var biases: [Double]
+    let activationFunction: ([Double]) -> [Double] = { input in
         return ceil(clip(input, low: 0.0, high: 1.0))
     }
 
-    init(inputSize: Int, outputSize: Int, weightInitializer: () -> FloatType) {
+    init(inputSize: Int, outputSize: Int, weightInitializer: () -> Double) {
         let allWeights = (0 ..< inputSize*outputSize) .map { _ in
             weightInitializer()
         }
@@ -27,7 +27,7 @@ struct HiddenLayer {
         self.weightCorrectionsInit = SliceableMatrix(rows: weights.rowCount, columns: weights.columnCount, repeatedValue: 1.0)
     }
 
-     let weightCorrectionsInit: SliceableMatrix<FloatType>
+     let weightCorrectionsInit: SliceableMatrix<Double>
 }
 
 extension HiddenLayer: Layer {
@@ -39,13 +39,13 @@ extension HiddenLayer: Layer {
         return weights.rowCount
     }
 
-    func process(input: [FloatType]) -> [FloatType] {
+    func process(input: [Double]) -> [Double] {
         return activationFunction(mul(weights, SliceableMatrix(column: input))[column: 0] .+ biases)
     }
 }
 
 extension HiddenLayer: LearningLayer {
-    mutating func learn(input: [FloatType], output: [FloatType], target: [FloatType], weightRate: FloatType, biasRate: FloatType) -> [FloatType] {
+    mutating func learn(input: [Double], output: [Double], target: [Double], weightRate: Double, biasRate: Double) -> [Double] {
        
 
         var weightCorrections = mul(weightRate, weightCorrectionsInit)
@@ -64,7 +64,7 @@ extension HiddenLayer: LearningLayer {
         biasCorrections = biasCorrections .* (output * -2.0 + 1.0)
         biasCorrections = biasCorrections .* targetNotEqualsOutput
 
-        let targetInput: [FloatType] =
+        let targetInput: [Double] =
             activationFunction(
 //                sum(weights′ * SliceableMatrix(column: targetNotEqualsOutput /* * 2.0 - 1.0 */), axies: .row)[column: 0]
                 sum(weights′ * SliceableMatrix(column: output), axies: .row)

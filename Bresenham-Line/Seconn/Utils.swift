@@ -61,12 +61,3 @@ public extension Array where Element == Float {
     }
 }
 
-public extension Array where Element == Double {
-    public func sum() -> Double {
-        return self.reduce(0, +)
-    }
-    
-    public func average() -> Double {
-        return self.sum() / Double(self.count)
-    }
-}
