@@ -65,9 +65,9 @@ extension CMKViewController {
 
             let angle = Double.pi * Double.random(in: 0..<1)
             //https://stats.stackexchange.com/questions/218407/encoding-angle-data-for-neural-network
-//            let encodedAngle = encodeAngle(angle,"binned") /// 1 -> 500 array 1 hot vector 000000000100000
-//            let encodedAngle = encodeAngle(angle,"gaussian")
-             let encodedAngle = encodeAngle(angle,"scaled")
+            let encodedAngle = encodeAngle(angle,"binned") /// 1 -> 500 array 1 hot vector 000000000100000
+            let encodedAngle = encodeAngle(angle,"gaussian") // FAILS HARD
+//             let encodedAngle = encodeAngle(angle,"scaled")
 //              let encodedAngle = encodeAngle(angle,"cossin")
             print("encodedAngle:",encodedAngle)
             trainAngles.append(encodedAngle)
@@ -102,14 +102,18 @@ extension CMKViewController {
             X = [Double](repeating: 0, count: 500 )
             X[Int(round(250*(angle/Double.pi + 1)))%500] = 1
         }else if (method == "gaussian"){ // Leaky binned encoding
-            
-            for i in 0...500{
-                X.append(Double(i))
+            for i in 0..<500{
+                X.append( Double(i))
             }
             
-            let idx:Double = 250*(angle/Double.pi + 1)
-            let Y = X-idx
-//            X = -Double.pi << Y //TODO
+            let piArray = Array(repeating:-Double.pi ,count:500)
+            let idx = Array(repeating:250*(angle/Double.pi + 1),count:500)
+
+            let result = Surge.sub(X,idx )
+            let result2 = Surge.mul(result,piArray)
+            let squared  = Surge.pow(result2, 2)
+            X = Surge.exp(squared)
+            
         }else if (method == "scaled"){ // Scaled to [-1,1] encoding
             X = Array([angle/Double.pi])
         }else if (method == "cossin"){ //Oxinabox's (cos,sin) encoding
