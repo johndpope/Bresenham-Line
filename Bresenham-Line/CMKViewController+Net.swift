@@ -25,12 +25,12 @@ extension CMKViewController {
     func generateTrainingImage(_ angle:Double,_ width:Int,_ height:Int,_ thickness:Double)->[Byte]{
         var image = Image<RGBA<UInt8>>(width: width, height: height, pixel: RGBA.transparent)
         
-        let x_0 = Double(width / 2)
-        let y_0 = Double(height / 2)
+        let x_0 = Double(width / 2) + 1
+        let y_0 = Double(height / 2) + 1
         let c = cos(angle)
         let s  = sin(angle)
-        for y in 0...height-1{
-            for x in 0...width-1{
+        for y in 0..<height{
+            for x in 0..<width{
                 let w1 = abs((Double(x)-x_0)*c + (Double(y)-y_0)*s)
                 let h1 = -(Double(x)-x_0)*s + (Double(y)-y_0)*c
                 if (w1 < Double(thickness / 2) && h1  > 0){
@@ -49,6 +49,7 @@ extension CMKViewController {
         print("BEGIN TEST AND TRAIN DATA")
         let width = 101 // Image width
         let height = 101 // Image heigth
+        // TOTAL NEURONS 10201 = 101 x 101
         let thickness:Double = 1.0 // Line thickness
         
         
@@ -64,11 +65,11 @@ extension CMKViewController {
 
             let angle = Double.pi * Double.random(in: 0..<1)
             //https://stats.stackexchange.com/questions/218407/encoding-angle-data-for-neural-network
-            let encodedAngle = encodeAngle(angle,"binned")
+//            let encodedAngle = encodeAngle(angle,"binned") /// 1 -> 500 array 1 hot vector 000000000100000
 //            let encodedAngle = encodeAngle(angle,"gaussian")
-//             let encodedAngle = encodeAngle(angle,"gaussian")
+             let encodedAngle = encodeAngle(angle,"scaled")
 //              let encodedAngle = encodeAngle(angle,"cossin")
-            
+            print("encodedAngle:",encodedAngle)
             trainAngles.append(encodedAngle)
             let image = generateTrainingImage(angle,width,height,thickness)
             trainImages.append(image)
@@ -85,7 +86,9 @@ extension CMKViewController {
         
 
         let trainImageData = trainImages.map{ return $0.map{ return   Double($0) / 255 }}
-        let network = Network(layerStructure: [1,500,1], learningRate: 0.01)
+        
+        let network: Network = Network(layerStructure: [10201,500,1], activationFunction: sigmoid, derivativeActivationFunction: derivativeSigmoid, learningRate: 0.006, hasBias: true)
+        
         network.train(inputs: trainImageData, expecteds: trainAngles, printError: true)
         let testImageData = testImages.map{ return $0.map{ return   Double($0) / 255 }}
         let (_, _, percentage) = network.validate(inputs: testImageData, expecteds: testAngles, accuracy: 0.95)
@@ -106,7 +109,7 @@ extension CMKViewController {
             
             let idx:Double = 250*(angle/Double.pi + 1)
             let Y = X-idx
-            //            X = exp(-Float.pi*(Y)**2.0) //TODO
+//            X = -Double.pi << Y //TODO
         }else if (method == "scaled"){ // Scaled to [-1,1] encoding
             X = Array([angle/Double.pi])
         }else if (method == "cossin"){ //Oxinabox's (cos,sin) encoding
