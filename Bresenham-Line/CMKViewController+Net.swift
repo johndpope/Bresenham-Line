@@ -110,7 +110,7 @@ extension CMKViewController {
             let idx = Array(repeating:250*(angle/Double.pi + 1),count:500)
 
             let result = Surge.sub(X,idx )
-            let result2 = Surge.mul(result,piArray)
+            let result2 = Surge.mul(piArray,result)
             let squared  = Surge.pow(result2, 2)
             X = Surge.exp(squared)
             
