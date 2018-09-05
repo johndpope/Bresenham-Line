@@ -46,12 +46,12 @@ extension CMKViewController {
     func testAndTrainData(){
         
         print("BEGIN TEST AND TRAIN DATA")
-        let width = 100 // Image width
-        let height = 100 // Image heigth
+        let width = 101 // Image width
+        let height = 101 // Image heigth
         let thickness:Double = 1.0 // Line thickness
         
         
-        let numTrain = 50000
+        let numTrain = 1000
         let numTest = 1000
         var testImages:[[Byte]] = []
         var testAngles:[Double] = []
@@ -62,7 +62,12 @@ extension CMKViewController {
         for _ in 0..<numTrain{
 
             let angle = Double.pi * Double.random(in: 0..<1)
-            trainAngles.append([angle])
+            let encodedAngle = encodeAngle(angle,"binned")
+//            let encodedAngle = encodeAngle(angle,"gaussian")
+//             let encodedAngle = encodeAngle(angle,"gaussian")
+//              let encodedAngle = encodeAngle(angle,"cossin")
+            
+            trainAngles.append(encodedAngle)
             let image = generateTrainingImage(angle,width,height,thickness)
             trainImages.append(image)
         }
@@ -78,15 +83,10 @@ extension CMKViewController {
         
 
         let trainImageData = trainImages.map{ return $0.map{ return   Double($0) / 255 }}
-        
-        let network = Network(layerStructure: [500], learningRate: 0.1)
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
+        let network = Network(layerStructure: [500], learningRate: 0.01)
         network.train(inputs: trainImageData, expecteds: trainAngles, printError: true)
-
-           let testImageData = testImages.map{ return $0.map{ return   Double($0) / 255 }}
-        
-          let (_, _, percentage) = network.validate(inputs: testImageData, expecteds: testAngles, accuracy: 0.95)
+        let testImageData = testImages.map{ return $0.map{ return   Double($0) / 255 }}
+        let (_, _, percentage) = network.validate(inputs: testImageData, expecteds: testAngles, accuracy: 0.95)
         print( "Accuracy: \(percentage * 100)%")
     }
     
