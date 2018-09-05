@@ -53,15 +53,15 @@ extension CMKViewController {
         let numTrain = 1000
         let numTest = 1000
         var testImages:[[Byte]] = []
-        var testAngles:[Double] = []
+        var testAngles:[[Double]] = []
         var trainImages:[[Byte]] = []
-        var trainAngles:[Double] = []
+        var trainAngles:[[Double]] = []
         
         
         for _ in 0..<numTrain{
 
             let angle = Double.pi * Double.random(in: 0..<1)
-            trainAngles.append(angle)
+            trainAngles.append([angle])
             let image = generateTrainingImage(angle,width,height,thickness)
             trainImages.append(image)
         }
@@ -70,7 +70,7 @@ extension CMKViewController {
         for _ in 0..<numTest{
 
             let angle = Double.pi * Double.random(in: 0..<1)
-            testAngles.append(angle)
+            testAngles.append([angle])
             let image = generateTrainingImage(angle,width,height,thickness)
             testImages.append(image)
         }
@@ -78,10 +78,10 @@ extension CMKViewController {
 
           let imageData = trainImages.map{ return $0.map{ return   Double($0) / 255 }}
         
-        var network: Network = Network(layerStructure: [1,6,1], learningRate: 0.9)
+        var network: Network = Network(layerStructure: [1,6,1], learningRate: 0.1)
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
-//        network.train(inputs: imageData, expecteds: trainAngles, printError: true)
+        network.train(inputs: imageData, expecteds: trainAngles, printError: true)
 
         
 
