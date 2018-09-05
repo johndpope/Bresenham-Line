@@ -51,7 +51,7 @@ extension CMKViewController {
         let thickness:Double = 1.0 // Line thickness
         
         
-        let numTrain = 1000
+        let numTrain = 50000
         let numTest = 1000
         var testImages:[[Byte]] = []
         var testAngles:[Double] = []
@@ -79,7 +79,7 @@ extension CMKViewController {
 
         let trainImageData = trainImages.map{ return $0.map{ return   Double($0) / 255 }}
         
-        let network = Network(layerStructure: [1000,1], learningRate: 0.1)
+        let network = Network(layerStructure: [500], learningRate: 0.1)
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
         network.train(inputs: trainImageData, expecteds: trainAngles, printError: true)
