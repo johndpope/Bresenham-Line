@@ -37,6 +37,7 @@ extension CMKViewController {
                 }
             }
         }
+
        let grayscale: Image<UInt8> = image.map { $0.gray }
         return grayscale.byteArray()
     }
@@ -53,7 +54,7 @@ extension CMKViewController {
         let numTrain = 1000
         let numTest = 1000
         var testImages:[[Byte]] = []
-        var testAngles:[[Double]] = []
+        var testAngles:[Double] = []
         var trainImages:[[Byte]] = []
         var trainAngles:[[Double]] = []
         
@@ -70,21 +71,23 @@ extension CMKViewController {
         for _ in 0..<numTest{
 
             let angle = Double.pi * Double.random(in: 0..<1)
-            testAngles.append([angle])
+            testAngles.append(angle)
             let image = generateTrainingImage(angle,width,height,thickness)
             testImages.append(image)
         }
         
 
-          let imageData = trainImages.map{ return $0.map{ return   Double($0) / 255 }}
+        let trainImageData = trainImages.map{ return $0.map{ return   Double($0) / 255 }}
         
-        var network: Network = Network(layerStructure: [1,6,1], learningRate: 0.1)
+        let network = Network(layerStructure: [1000,1], learningRate: 0.1)
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
-        network.train(inputs: imageData, expecteds: trainAngles, printError: true)
+        network.train(inputs: trainImageData, expecteds: trainAngles, printError: true)
 
+           let testImageData = testImages.map{ return $0.map{ return   Double($0) / 255 }}
         
-
+          let (_, _, percentage) = network.validate(inputs: testImageData, expecteds: testAngles, accuracy: 0.95)
+        print( "Accuracy: \(percentage * 100)%")
     }
     
     // Returns encoded angle using specified method ("binned","scaled","cossin","gaussian")
