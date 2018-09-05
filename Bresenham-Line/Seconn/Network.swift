@@ -10,6 +10,45 @@ import Surge
 
 public typealias FloatType = Float
 
+public enum OneHotDecoderError: Error {
+    case invalidInput(value: [FloatType])
+    
+    public var localizedDescription: String {
+        switch self {
+        case let .invalidInput(value):
+            return "Invalid input for one-hot decode: \(value)"
+        }
+    }
+}
+
+public func oneHotDecode(_ a: [FloatType]) throws -> Int {
+    for i in a.indices {
+        if a[i] == 1.0 {
+            return i
+        }
+    }
+    throw OneHotDecoderError.invalidInput(value: a)
+}
+
+
+struct InputLayer {
+    let inputSize: Int
+    let activationFunction: ([FloatType]) -> [FloatType] = { input in
+        return ceil(clip(input, low: 0.0, high: 1.0))
+    }
+}
+
+extension InputLayer: Layer {
+    var outputSize: Int {
+        return inputSize
+    }
+    
+    func process(input: [FloatType]) -> [FloatType] {
+        return activationFunction(input)
+    }
+}
+
+
 protocol Layer {
     func process(input: [FloatType]) -> [FloatType]
 
@@ -69,32 +108,6 @@ public class SecoNetwork {
     public func process(input: [FloatType]) -> [FloatType] {
         return layers.reduce(input) { (lastOutput, layer) -> [FloatType] in
             layer.process(input: lastOutput)
-        }
-    }
-
-    public func train(input: [FloatType], output: [FloatType], rateReduction: FloatType, inverse: Bool = false) {
-        let hiddenInput: [FloatType]
-        var hiddenIOs: [([FloatType], [FloatType])] = []
-
-        hiddenInput = layers.first!.process(input: input)
-
-        let _ = layers.dropFirst().reduce(hiddenInput) { (lastOutput, layer) -> [FloatType] in
-            let output = layer.process(input: lastOutput)
-            hiddenIOs.append((lastOutput, output))
-            return output
-        }
-
-        let _ = zip(hiddenIOs, layers.indices.filter { layerIdx in layers[layerIdx] is LearningLayer })
-            .reversed()
-            .reduce(output) { (lastOutput, arg) in
-                let (layerIOs, layerIdx) = arg
-                let (layerInput, layerOutput) = layerIOs
-                var layerTmp = layers[layerIdx] as! Layer & LearningLayer
-                let newOutput = layerTmp.learn(input: layerInput, output: layerOutput, target: lastOutput,
-                                               weightRate: (inverse ? -1.0 : 1.0) * config.learningRateForWeights * rateReduction,
-                                            biasRate: (inverse ? -1.0 : 1.0) * config.learningRateForBiases * rateReduction)
-                layers[layerIdx] = layerTmp
-                return newOutput
         }
     }
 }

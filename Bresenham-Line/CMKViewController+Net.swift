@@ -58,7 +58,7 @@ extension CMKViewController {
         var trainAngles:[Float] = []
         
         
-        for _ in 0...numTrain{
+        for _ in 0..<numTrain{
             let randomFloat = Float.random(in: 0..<1)
             let angle = Float.pi*randomFloat
             trainAngles.append(angle)
@@ -67,7 +67,7 @@ extension CMKViewController {
         }
         
         
-        for _ in 0...numTest{
+        for _ in 0..<numTest{
             let randomFloat = Float.random(in: 0..<1)
             let angle = Float.pi*randomFloat
             testAngles.append(angle)
@@ -94,20 +94,20 @@ extension CMKViewController {
                 if skipper == 0 {
                     skipper = skipValue
                     let t = test.test(batches: 0..<3)
-                    t.totalPerformance
-                    t.indexedPerformance
+//                    t.totalPerformance
+//                    t.indexedPerformance
                 } else {
                     skipper -= 1
                     let t = test.test(batches: 0..<1)
-                    t.totalPerformance
-                    t.indexedPerformance
+//                    t.totalPerformance
+//                    t.indexedPerformance
                 }
             }
             print("Using plain method")
             for trainState in test.train().prefix(500).dropFirst(250) {
                 doLearn(test, state: trainState, rate: rate)
                 rate *= rateDecay
-                doTest(test)
+//                doTest(test)
             }
             
             rate = 0.5
@@ -115,18 +115,8 @@ extension CMKViewController {
             
             print("Rate: \(rateDefault)")
             print("Rate decay: \(rateDecay)")
-            
-            if false {
-                print("Using plain method")
-                for trainState in test.train().prefix(250) {
-                    doLearn(test, state: trainState, rate: rate)
-                    rate *= rateDecay
-                    doTest(test)
-                }
-            }
-            
-//            test.neuralNetwork
-            print(test.neuralNetwork)
+
+//            print(test.neuralNetwork)
             
             /*:
              Internally, this network is set to use 1000 neurons. Obviously,
@@ -135,7 +125,7 @@ extension CMKViewController {
              suffer from EC-saturation and value locking, which happen when using
              Laplacian operator on common networks.
              */
-            let testResult = test.test(batches: 0..<10)
+          /*  let testResult = test.test(batches: 0..<10)
             
             let trainPerformance = test.train().prefix(250).map { s in argmax(s.process()) == (try! oneHotDecode(s.value.output)) ? 1.0 : 0.0  }.average()
             print("Train performance: \(trainPerformance)")
@@ -145,7 +135,7 @@ extension CMKViewController {
             let target = test.dataset.testBatch(index: 0).1.map(argmax)
             let result = test.batchCompute(inputBatch: test.dataset.testBatch(index: 0).0)
             
-            print(zip(target, result).map { t,r in "\(t): \(argmax(r)) \(r)"}, separator: "\n")
+            print(zip(target, result).map { t,r in "\(t): \(argmax(r)) \(r)"}, separator: "\n")*/
             
         }
         catch let error {

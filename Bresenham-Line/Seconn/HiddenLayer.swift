@@ -46,54 +46,7 @@ extension HiddenLayer: Layer {
 
 extension HiddenLayer: LearningLayer {
     mutating func learn(input: [FloatType], output: [FloatType], target: [FloatType], weightRate: FloatType, biasRate: FloatType) -> [FloatType] {
-        //        y1 = act(sum(x1..xN * weights) + biases)
-        //
-        //        if y0_1 == 0
-        //          if y1 == 0
-        //            biases[y1] += biasRate
-        //            if x1 == 0
-        //              weights[x1][y1] += weightRate
-        //              x1Corr = 0
-        //            else x1 == 1
-        //              weights[x1][y1] += weightRate (nop)
-        //              x1Corr = 0
-        //          else y1 == 1
-        //            biases[y1] -= biasRate
-        //            if x1 == 0
-        //              weights[x1][y1] -= weightRate (nop)
-        //              x1Corr = 1
-        //            else x1 == 1
-        //              weights[x1][y1] -= weightRate
-        //              x1Corr = 1
-        //        else y0_1 == 1
-        //          if y1 == 0
-        //            biases[y1] += biasRate
-        //            if x1 == 0
-        //              weights[x1][y1] += weightRate (nop)
-        //              x1Corr = 1
-        //            else x1 == 1
-        //              weights[x1][y1] += weightRate
-        //              x1Corr = 1
-        //          else y1 == 1
-        //            biases[y1] -= biasRate
-        //            if x1 == 0
-        //              weights[x1][y1] -= weightRate
-        //              x1Corr = 0
-        //            else x1 == 1
-        //              weights[x1][y1] -= weightRate (nop)
-        //              x1Corr = 0
-        //
-        //        weightCorr = [weightRate]
-        //        y1 == 1 -> weightCorr[.][y1] *= -1
-        //        y0_1 == y1 ->
-        //          x1 == 1 -> weightCorr[x1][y1] = 0
-        //          x1Corr = 0
-        //        y0_1 != y1 ->
-        //          x1 == 0 -> weightCorr[x1][y1] = 0
-        //          x1Corr = 1
-        //
-        //        biasCorr = [biasRate]
-        //        y1 == 1 -> biasCorr[y1] *= -1
+       
 
         var weightCorrections = mul(weightRate, weightCorrectionsInit)
         weightCorrections = elmul(weightCorrections, SliceableMatrix(repeatElement(output * -1.5 + 0.5, count: weightCorrections.columnCount))′)
