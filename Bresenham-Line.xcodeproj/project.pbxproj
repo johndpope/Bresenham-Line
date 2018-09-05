@@ -18,6 +18,11 @@
 		170DED6F212C9A64004BF4AE /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DED69212C9A63004BF4AE /* Int.swift */; };
 		170DED70212C9A64004BF4AE /* CGPoint+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DED6A212C9A63004BF4AE /* CGPoint+Hashable.swift */; };
 		170DED71212C9A64004BF4AE /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170DED6B212C9A63004BF4AE /* CGPoint+Extension.swift */; };
+		1722D0E921403E2600DB8597 /* Neuron.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1722D0E421403E2600DB8597 /* Neuron.swift */; };
+		1722D0EA21403E2600DB8597 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1722D0E521403E2600DB8597 /* Functions.swift */; };
+		1722D0EB21403E2600DB8597 /* NeuralNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1722D0E621403E2600DB8597 /* NeuralNetwork.swift */; };
+		1722D0EC21403E2600DB8597 /* BiasNeuron.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1722D0E721403E2600DB8597 /* BiasNeuron.swift */; };
+		1722D0ED21403E2600DB8597 /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1722D0E821403E2600DB8597 /* Layer.swift */; };
 		174FEB0D212DE550004EA830 /* Image+LBP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB0C212DE550004EA830 /* Image+LBP.swift */; };
 		174FEB14212F4E12004EA830 /* CMKMouseTrackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB0F212F4E12004EA830 /* CMKMouseTrackDelegate.swift */; };
 		174FEB15212F4E12004EA830 /* CMKWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB10212F4E12004EA830 /* CMKWindowController.swift */; };
@@ -26,15 +31,6 @@
 		174FEB18212F4E12004EA830 /* CMKView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB13212F4E12004EA830 /* CMKView.swift */; };
 		174FEB1C212F4E8E004EA830 /* CMKViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB1B212F4E8E004EA830 /* CMKViewController.swift */; };
 		176E2943213F12A7000156B7 /* Gzip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 176E2932213F129E000156B7 /* Gzip.framework */; };
-		176E2958213F140C000156B7 /* OutputLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176E2946213F140C000156B7 /* OutputLayer.swift */; };
-		176E295A213F140C000156B7 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176E2948213F140C000156B7 /* Test.swift */; };
-		176E295D213F140C000156B7 /* NoiseDataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176E294B213F140C000156B7 /* NoiseDataset.swift */; };
-		176E295E213F140C000156B7 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176E294C213F140C000156B7 /* Network.swift */; };
-		176E295F213F140C000156B7 /* learnMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176E294D213F140C000156B7 /* learnMethods.swift */; };
-		176E2960213F140C000156B7 /* Mnist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176E294E213F140C000156B7 /* Mnist.swift */; };
-		176E2962213F140C000156B7 /* HiddenLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176E2950213F140C000156B7 /* HiddenLayer.swift */; };
-		176E2965213F140C000156B7 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176E2953213F140C000156B7 /* Utils.swift */; };
-		176E2966213F140C000156B7 /* MNISTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176E2954213F140C000156B7 /* MNISTManager.swift */; };
 		17D20334212F619E00D92039 /* CMKViewController+Net.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174FEB19212F4E31004EA830 /* CMKViewController+Net.swift */; };
 		17D601E3213EFD0500EA53F9 /* EasyImagy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D601E1213EFD0400EA53F9 /* EasyImagy.framework */; };
 		17D60286213F031D00EA53F9 /* Surge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D6027B213F030C00EA53F9 /* Surge.framework */; };
@@ -172,6 +168,11 @@
 		170DED69212C9A63004BF4AE /* Int.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		170DED6A212C9A63004BF4AE /* CGPoint+Hashable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Hashable.swift"; sourceTree = "<group>"; };
 		170DED6B212C9A63004BF4AE /* CGPoint+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
+		1722D0E421403E2600DB8597 /* Neuron.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Neuron.swift; sourceTree = "<group>"; };
+		1722D0E521403E2600DB8597 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		1722D0E621403E2600DB8597 /* NeuralNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeuralNetwork.swift; sourceTree = "<group>"; };
+		1722D0E721403E2600DB8597 /* BiasNeuron.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BiasNeuron.swift; sourceTree = "<group>"; };
+		1722D0E821403E2600DB8597 /* Layer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
 		174FEB0C212DE550004EA830 /* Image+LBP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+LBP.swift"; sourceTree = "<group>"; };
 		174FEB0F212F4E12004EA830 /* CMKMouseTrackDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMKMouseTrackDelegate.swift; sourceTree = "<group>"; };
 		174FEB10212F4E12004EA830 /* CMKWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMKWindowController.swift; sourceTree = "<group>"; };
@@ -238,6 +239,18 @@
 				170DED6B212C9A63004BF4AE /* CGPoint+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		1722D0E321403E2600DB8597 /* NN */ = {
+			isa = PBXGroup;
+			children = (
+				1722D0E421403E2600DB8597 /* Neuron.swift */,
+				1722D0E521403E2600DB8597 /* Functions.swift */,
+				1722D0E621403E2600DB8597 /* NeuralNetwork.swift */,
+				1722D0E721403E2600DB8597 /* BiasNeuron.swift */,
+				1722D0E821403E2600DB8597 /* Layer.swift */,
+			);
+			path = NN;
 			sourceTree = "<group>";
 		};
 		174FEB0E212F4E12004EA830 /* Application */ = {
@@ -328,6 +341,7 @@
 		DBFC828A1E7C016D00A86F74 /* Bresenham-Line */ = {
 			isa = PBXGroup;
 			children = (
+				1722D0E321403E2600DB8597 /* NN */,
 				176E2944213F140C000156B7 /* Seconn */,
 				174FEB0E212F4E12004EA830 /* Application */,
 				170DED65212C9A63004BF4AE /* Extension */,
@@ -535,31 +549,27 @@
 				174FEB17212F4E12004EA830 /* AppDelegate.swift in Sources */,
 				170DED62212C94D5004BF4AE /* Bresenham+Segments.swift in Sources */,
 				174FEB1C212F4E8E004EA830 /* CMKViewController.swift in Sources */,
-				176E2960213F140C000156B7 /* Mnist.swift in Sources */,
-				176E295E213F140C000156B7 /* Network.swift in Sources */,
+				1722D0EA21403E2600DB8597 /* Functions.swift in Sources */,
+				1722D0EB21403E2600DB8597 /* NeuralNetwork.swift in Sources */,
 				17D20334212F619E00D92039 /* CMKViewController+Net.swift in Sources */,
-				176E295F213F140C000156B7 /* learnMethods.swift in Sources */,
 				1707B98C2121F1D100FA1E70 /* TimeAxisWaveFormPlot.swift in Sources */,
+				1722D0E921403E2600DB8597 /* Neuron.swift in Sources */,
 				170DED6D212C9A64004BF4AE /* CMKView+Mouse.swift in Sources */,
-				176E2965213F140C000156B7 /* Utils.swift in Sources */,
 				170DED6C212C9A64004BF4AE /* ConsolePrint.swift in Sources */,
 				174FEB14212F4E12004EA830 /* CMKMouseTrackDelegate.swift in Sources */,
-				176E2966213F140C000156B7 /* MNISTManager.swift in Sources */,
-				176E295D213F140C000156B7 /* NoiseDataset.swift in Sources */,
-				176E2962213F140C000156B7 /* HiddenLayer.swift in Sources */,
+				1722D0ED21403E2600DB8597 /* Layer.swift in Sources */,
 				174FEB0D212DE550004EA830 /* Image+LBP.swift in Sources */,
 				1707B98B2121F1D100FA1E70 /* ImageToSpectrumByFFT.swift in Sources */,
 				174FEB15212F4E12004EA830 /* CMKWindowController.swift in Sources */,
 				170DED64212C9967004BF4AE /* FAST+segments.swift in Sources */,
-				176E2958213F140C000156B7 /* OutputLayer.swift in Sources */,
 				832A051B1F2C180D00189151 /* Bresenham.swift in Sources */,
 				17D6EDCE2118DAD700F18F2B /* FAST.swift in Sources */,
 				170DED70212C9A64004BF4AE /* CGPoint+Hashable.swift in Sources */,
 				174FEB18212F4E12004EA830 /* CMKView.swift in Sources */,
 				170DED71212C9A64004BF4AE /* CGPoint+Extension.swift in Sources */,
 				170DED6E212C9A64004BF4AE /* NSPoint.swift in Sources */,
+				1722D0EC21403E2600DB8597 /* BiasNeuron.swift in Sources */,
 				170DED6F212C9A64004BF4AE /* Int.swift in Sources */,
-				176E295A213F140C000156B7 /* Test.swift in Sources */,
 				174FEB16212F4E12004EA830 /* CMKWindow.swift in Sources */,
 				1707B98D2121F1D100FA1E70 /* TimeAxisWaveFormGenerate.swift in Sources */,
 			);

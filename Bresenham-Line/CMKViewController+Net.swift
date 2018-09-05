@@ -46,8 +46,8 @@ extension CMKViewController {
         
         
         for _ in 0..<numTrain{
-            let randomFloat = Double.random(in: 0..<1)
-            let angle = Double.pi*randomFloat
+
+            let angle = Double.pi * Double.random(in: 0..<1)
             trainAngles.append(angle)
             let image = generateTrainingImage(angle,width,height,thickness)
             trainImages.append(image)
@@ -55,90 +55,31 @@ extension CMKViewController {
         
         
         for _ in 0..<numTest{
-            let randomFloat = Double.random(in: 0..<1)
-            let angle = Double.pi*randomFloat
+
+            let angle = Double.pi * Double.random(in: 0..<1)
             testAngles.append(angle)
             let image = generateTrainingImage(angle,width,height,thickness)
             testImages.append(image)
         }
         
 
-        do {
-            let  test = try SeconnTest()
-            
-            test.debugLevel = .info
-            
-            let rateDefault: Double = 0.8
-            var rate: Double = rateDefault
-            var rateDecay: Double = 1.000
-            var skipper = 0
-            let skipValue = 10
-            
-            print("Rate: \(rateDefault)")
-            print("Rate decay: \(rateDecay)")
-            
-            func doTest(_ test: SeconnTest) {
-                if skipper == 0 {
-                    skipper = skipValue
-                    let t = test.test(batches: 0..<3)
-//                    t.totalPerformance
-//                    t.indexedPerformance
-                } else {
-                    skipper -= 1
-                    let t = test.test(batches: 0..<1)
-//                    t.totalPerformance
-//                    t.indexedPerformance
-                }
-            }
-            print("Using plain method")
-            for trainState in test.train().prefix(500).dropFirst(250) {
-                doLearn(test, state: trainState, rate: rate)
-                rate *= rateDecay
-//                doTest(test)
-            }
-            
-            rate = 0.5
-            rateDecay = 0.995
-            
-            print("Rate: \(rateDefault)")
-            print("Rate decay: \(rateDecay)")
+        var network: Network = Network(layerStructure: [1,6,1], learningRate: 0.9)
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+        let xos = randomNums(number: 1000000, limit: 500)
+        let ys = xos.map{[(0.5 * sin(10 * ($0 / 1000)) + 0.5)]}
+        let xs = xos.map{[$0 / 1000]}
+        network.train(inputs: xs, expecteds: ys, printError: true)
 
-//            print(test.neuralNetwork)
-            
-            /*:
-             Internally, this network is set to use 1000 neurons. Obviously,
-             you can't get high performance with binary step and such a little quantity
-             of neurons on MNIST dataset. But it also shows that it works, and doesn't
-             suffer from EC-saturation and value locking, which happen when using
-             Laplacian operator on common networks.
-             */
-          /*  let testResult = test.test(batches: 0..<10)
-            
-            let trainPerformance = test.train().prefix(250).map { s in argmax(s.process()) == (try! oneHotDecode(s.value.output)) ? 1.0 : 0.0  }.average()
-            print("Train performance: \(trainPerformance)")
-            print("Test performance: \(testResult.totalPerformance)")
-            print("Test performance (indexed): \(testResult.indexedPerformance)")
-            
-            let target = test.dataset.testBatch(index: 0).1.map(argmax)
-            let result = test.batchCompute(inputBatch: test.dataset.testBatch(index: 0).0)
-            
-            print(zip(target, result).map { t,r in "\(t): \(argmax(r)) \(r)"}, separator: "\n")*/
-            
-        }
-        catch let error {
-            print(error.localizedDescription)
-            abort()
-        }
         
 
     }
     
     // Returns encoded angle using specified method ("binned","scaled","cossin","gaussian")
-    func encodeAngle(_ angle:Double,_ method:String)->[Float]{
+    func encodeAngle(_ angle:Double,_ method:String)->[Double]{
         var X:[Double] = []
         if (method == "binned"){ // 1-of-500 encoding
             X = [Double](repeating: 0, count: 500 )
-            X[Int(round(250*(angle/Float.pi + 1)))%500] = 1
+            X[Int(round(250*(angle/Double.pi + 1)))%500] = 1
         }else if (method == "gaussian"){ // Leaky binned encoding
             
             for i in 0...500{
@@ -158,14 +99,14 @@ extension CMKViewController {
     
     
     // Returns decoded angle using specified method
-    func decodeAngle(_ X:[Double],_ method:String)->Float{
+    func decodeAngle(_ X:[Double],_ method:String)->Double{
         var M:Double = 0
         var angle:Double = 0
         if (method == "binned") || (method == "gaussian"){ // 1-of-500 or gaussian encoding
             M = X.max()!
             for i in 0...X.count{
                 if abs(X[i]-M) < 1e-5{
-                    angle = Double.pi*Float(i/250) - Float.pi
+                    angle = Double.pi*Double(i/250) - Double.pi
                 }
             }
             // angle = pi*dot(array([i for i in range(500)]),X)/500  # Averaging
@@ -176,123 +117,7 @@ extension CMKViewController {
         }
         return angle
     }
-    
-    /*
-    // Train and test neural network with specified angle encoding method
-     func testEncodingMethod(trainImages:[Image<RGBA<UInt8>>],trainAngles:[Float],testImages:[Image<RGBA<UInt8>>], testAngles:[Float], method:String, numIters:Int, alpha:Float = 0.01, alphaBias:Float = 0.0001, momentum:Float = 0.9, hiddenLayerSize:Int = 500){
-     //        var numTrain,inLayerSize = shape(train_images)
-     var num_test = testAngles.count
-     
-     if method == "binned"{
-        outLayerSize = 500
-     }else if method == "gaussian"{
-        outLayerSize = 500
-     }else if method == "scaled"{
-        outLayerSize = 1
-     }else if  method == "cossin"{
-        outLayerSize = 2
-     }
-     // Initial weights and biases
-     var IN_HID = rand(inLayerSize,hidLayerSize) - 0.5 // IN --> HID weights
-     var HID_OUT = rand(hid_layer_size,outLayerSize) - 0.5 // HID --> OUT weights
-     var BIAS1 = rand(hidLayerSize) - 0.5 // Bias for hidden layer
-     var BIAS2 = rand(outLayerSize) - 0.5 // Bias for output layer
-     
-     
-     // Train
-     for j in 0...numIters{
-         for i in 0...numTrain{
-         
-         }
-     }
-     
-     // Get training example
-     IN = train_images[i]
-     TARGET = encode_angle(train_angles[i],method)
-     
-     // Feed forward and compute error derivatives
-     HID = sigmoid(dot(IN,IN_HID)+BIAS1)
-     
-     if method == "binned" or method == "gaussian": // Use softmax
-     OUT = exp(clip(dot(HID,HID_OUT)+BIAS2,-100,100))
-     OUT = OUT/sum(OUT)
-     dACT2 = OUT - TARGET
-     elif method == "cossin" or method == "scaled": // Linear
-     OUT = dot(HID,HID_OUT)+BIAS2
-     dACT2 = OUT-TARGET
-     else:
-     print("Invalid encoding method")
-     
-     dHID_OUT = outer(HID,dACT2)
-     dACT1 = dot(dACT2,HID_OUT.T)*HID*(1-HID)
-     dIN_HID = outer(IN,dACT1)
-     dBIAS1 = dACT1
-     dBIAS2 = dACT2
-     
-     
-     // Update the weights
-     HID_OUT -= alpha*dHID_OUT
-     IN_HID -= alpha*dIN_HID
-     BIAS1 -= alpha_bias*dBIAS1
-     BIAS2 -= alpha_bias*dBIAS2
-     
-     // Test
-     test_errors = zeros(num_test)
-     angles = zeros(num_test)
-     target_angles = zeros(num_test)
-     accuracy_to_point001 = 0
-     accuracy_to_point01 = 0
-     accuracy_to_point1 = 0
-     
-     for i in 0...num_test{
-     // Get training example
-     IN = test_images[i]
-     target_angle = test_angles[i]
-     
-     // Feed forward
-     HID = sigmoid(dot(IN,IN_HID)+BIAS1)
-     
-     if (method == "binned") || method == "gaussian"{
-     OUT = exp(clip(dot(HID,HID_OUT)+BIAS2,-100,100))
-     OUT = OUT/sum(OUT)
-     }else if  (method == "cossin") || (method == "scaled"){
-     OUT = dot(HID,HID_OUT)+BIAS2
-     }
-     
-     
-     // Decode output
-     angle = decodeAngle(OUT,method)
-     
-     // Compute errors
-     error = abs(angle-target_angle)
-     test_errors[i] = error
-     angles[i] = angle
-     
-     target_angles[i] = target_angle
-     if error < 0.1{
-     accuracy_to_point1 += 1
-     }
-     if error < 0.01{
-     accuracy_to_point01 += 1
-     }
-     if error < 0.001{
-     accuracy_to_point001 += 1
-     }
-     }
-     
-     
-     
-     
-     // Compute and return results
-     accuracy_to_point1 = 100.0*accuracy_to_point1/num_test
-     accuracy_to_point01 = 100.0*accuracy_to_point01/num_test
-     accuracy_to_point001 = 100.0*accuracy_to_point001/num_test
-     
-     return mean(test_errors),median(test_errors),min(test_errors),max(test_errors),accuracy_to_point1,accuracy_to_point01,accuracy_to_point
-     }*/
-     
 
-    
     
     
     
@@ -318,10 +143,6 @@ extension CMKViewController {
         let points = Bresenham.pointsAlongCircle(xc: 0, yc: 0, r: 3)
         print("points:",points)
         
-        
-        //        let fast = FAST()
-        //        let cnrs = fast.findLines(image: newImage, threshold: 2)
-        //        testView.myPixels = cnrs
         
     }
     
