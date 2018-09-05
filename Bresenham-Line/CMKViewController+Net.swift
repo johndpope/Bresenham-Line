@@ -5,10 +5,23 @@ import Surge
 
 
 
+typealias Byte = UInt8
+
+extension Image where Pixel == UInt8 {
+    func byteArray()->[Byte]{
+        var pixelIterator = self.makeIterator()
+        var pixelArray:[Byte] = []
+        while let pixel = pixelIterator.next() {
+            pixelArray.append(pixel)
+        }
+        return pixelArray
+    }
+}
+
 
 extension CMKViewController {
     
-    func generateTrainingImage(_ angle:Double,_ width:Int,_ height:Int,_ thickness:Double)->Image<RGBA<UInt8>>{
+    func generateTrainingImage(_ angle:Double,_ width:Int,_ height:Int,_ thickness:Double)->[Byte]{
         var image = Image<RGBA<UInt8>>(width: width, height: height, pixel: RGBA.transparent)
         
         let x_0 = Double(width / 2)
@@ -24,8 +37,8 @@ extension CMKViewController {
                 }
             }
         }
-        
-        return image
+       let grayscale: Image<UInt8> = image.map { $0.gray }
+        return grayscale.byteArray()
     }
     
     
@@ -39,9 +52,9 @@ extension CMKViewController {
         
         let numTrain = 1000
         let numTest = 1000
-        var testImages:[Image<RGBA<UInt8>>] = []
+        var testImages:[[Byte]] = []
         var testAngles:[Double] = []
-        var trainImages:[Image<RGBA<UInt8>>] = []
+        var trainImages:[[Byte]] = []
         var trainAngles:[Double] = []
         
         
@@ -63,12 +76,12 @@ extension CMKViewController {
         }
         
 
+          let imageData = trainImages.map{ return $0.map{ return   Double($0) / 255 }}
+        
         var network: Network = Network(layerStructure: [1,6,1], learningRate: 0.9)
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        let xos = randomNums(number: 1000000, limit: 500)
-        let ys = xos.map{[(0.5 * sin(10 * ($0 / 1000)) + 0.5)]}
-        let xs = xos.map{[$0 / 1000]}
-        network.train(inputs: xs, expecteds: ys, printError: true)
+
+//        network.train(inputs: imageData, expecteds: trainAngles, printError: true)
 
         
 
