@@ -12,8 +12,9 @@ extension CMKViewController {
     
 
 
-    // will spit out images with slopes on them.
-    // attempt to use bresenham radial slices instead of square image to slim down neural network
+    // will spit out 100 images with slopes on them then train a neural net and test against it.
+    // attempt to use bresenham radial slices as neuron inputs instead of square image to slim down neural network
+    // eg. imagine multiple circles within square that capture smaller representation of network
     //https://stats.stackexchange.com/questions/218407/encoding-angle-data-for-neural-network
     func testRadialNeuralNetAndTrainData(){
         
@@ -34,10 +35,10 @@ extension CMKViewController {
         for _ in 0..<numTrain{
             let angle:Double = .pi * .random(in: 0..<1)
        
-            let encodedAngle = encodeAngle(angle,.binned) /// 1 -> 500 array 1 hot vector 000000000100000
+//            let encodedAngle = encodeAngle(angle,.binned) /// 1 -> 500 array 1 hot vector 000000000100000 - SUCKS
 //            let encodedAngle = encodeAngle(angle,.gaussian) // FAILS HARD
 //             let encodedAngle = encodeAngle(angle,.scaled)
-//              let encodedAngle = encodeAngle(angle,.cossin)
+              let encodedAngle = encodeAngle(angle,.cossin)
             trainAngles.append(encodedAngle)
             let image = generateTrainingImage(angle,width,height,thickness)
             let grayscale: Image<UInt8> = image.map { $0.gray }
@@ -73,8 +74,8 @@ extension CMKViewController {
             let (_, _, percentage) = network.validate(inputs: testImageData, expecteds: testAngles, accuracy: 0.95)
             print( "Accuracy: \(percentage * 100)%")
             
-            Storage.store(network, to: .documents, as: "network.json")
-              let savedNetwork = Storage.retrieve("network.json", from: .documents, as: Network.self)
+//            Storage.store(network, to: .documents, as: "network.json")
+//              let savedNetwork = Storage.retrieve("network.json", from: .documents, as: Network.self)
         }
         catch{
             print("FAILED")
