@@ -66,10 +66,12 @@ class Neuron:Codable{
     func encode(to encoder: Encoder) throws
     {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        
         try container.encode(weights, forKey: .weights)
         try container.encode(inputCache, forKey: .inputCache)
         try container.encode(delta, forKey: .delta)
          try container.encode(learningRate, forKey: .learningRate)
+
         // encoding escape functions ?? activationFunction /derivativeActivationFunction
     }
     // END

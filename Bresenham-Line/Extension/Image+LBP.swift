@@ -1,5 +1,60 @@
 import EasyImagy
 import Foundation
+import QuartzCore
+
+
+func executionTimeInterval(block: () -> ()) -> CFTimeInterval {
+    let start = CACurrentMediaTime()
+    block();
+    let end = CACurrentMediaTime()
+    return end - start
+}
+
+
+typealias Byte = UInt8
+
+
+extension Image where Pixel == UInt8 {
+    func byteArray()->[Byte]{
+        var pixelIterator = self.makeIterator()
+        var pixelArray:[Byte] = []
+        while let pixel = pixelIterator.next() {
+            pixelArray.append(pixel)
+        }
+        return pixelArray
+    }
+}
+
+extension Image  where Pixel == UInt8{
+    
+    // pass in bresenham circle get back respective pixels
+    func pixelsAt(_ circle:[CGPoint]) -> [UInt8] {
+        var pixels:[Pixel] = []
+        for pt in circle{
+            if let   pixel =   self.pixelAt(x: Int(pt.x), y: Int(pt.y)){
+                pixels.append(pixel)
+            }
+        }
+        return pixels
+    }
+    
+    // N.B. will only work on grayscale for time being
+    // TODO try out with linea binary patterns LBP
+    // will return array of circles / growing radius with pixel values
+    func radialCuts( radii:[Int] = [3,5,10,25,30,40])-> [UInt8] { // an array to pass to neural net 3x3 , 15x15,30x30,45x45 - prototype
+        var result:[UInt8] = []  // circle pixels values
+        let pt = CGPoint(x: self.width  / 2, y: self.height / 2)
+        
+        for radius in radii {
+            let pts = Bresenham.pointsAlongCircle(pt:pt, r: radius)
+            let pixels  = self.pixelsAt(pts)
+            result.append( contentsOf:pixels)
+        }
+        return result
+    }
+    
+}
+
 
 //typealias <#type name#> = <#type expression#>
 func step(_ lhs:UInt8,_ rhs:UInt8)->UInt8{
