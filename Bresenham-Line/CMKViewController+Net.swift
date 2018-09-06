@@ -14,6 +14,7 @@ func executionTimeInterval(block: () -> ()) -> CFTimeInterval {
 
 typealias Byte = UInt8
 
+
 extension Image where Pixel == UInt8 {
     func byteArray()->[Byte]{
         var pixelIterator = self.makeIterator()
@@ -25,11 +26,41 @@ extension Image where Pixel == UInt8 {
     }
 }
 
+extension Image  where Pixel == UInt8{
+    
+    // pass in bresenham circle get back respective pixels
+    func pixelsAt(_ circle:[CGPoint]) -> [UInt8] {
+        var pixels:[Pixel] = []
+        for pt in circle{
+            if let   pixel =   self.pixelAt(x: Int(pt.x), y: Int(pt.y)){
+                pixels.append(pixel)
+            }
+        }
+        return pixels
+    }
+    
+    // N.B. will only work on grayscale for time being
+    // TODO try out with linea binary patterns LBP
+    // will return array of circles / growing radius with pixel values
+    func radialCuts( radii:[Int] = [3,15,30,45])-> [UInt8] { // an array to pass to neural net 3x3 , 15x15,30x30,45x45 - prototype
+        var result:[UInt8] = []  // circle pixels values
+        let pt = CGPoint(x: self.width  / 2, y: self.height / 2)
+        
+        for radius in radii {
+            let pts = Bresenham.pointsAlongCircle(pt:pt, r: radius)
+            let pixels  = self.pixelsAt(pts)
+            result.append( contentsOf:pixels)
+        }
+        return result
+    }
+    
+}
+
 
 
 extension CMKViewController {
     
-    func generateTrainingImage(_ angle:Double,_ width:Int,_ height:Int,_ thickness:Double)->[Byte]{
+    func generateTrainingImage(_ angle:Double,_ width:Int,_ height:Int,_ thickness:Double)->Image<RGBA<UInt8>>{
         var image = Image<RGBA<UInt8>>(width: width, height: height, pixel: RGBA.transparent)
         
         let x_0 = Double(width / 2) + 1
@@ -46,8 +77,7 @@ extension CMKViewController {
             }
         }
 
-       let grayscale: Image<UInt8> = image.map { $0.gray }
-        return grayscale.byteArray()
+        return image
     }
     
     
@@ -79,7 +109,8 @@ extension CMKViewController {
 //            print("encodedAngle:",encodedAngle)
             trainAngles.append(encodedAngle)
             let image = generateTrainingImage(angle,width,height,thickness)
-            trainImages.append(image)
+            let grayscale: Image<UInt8> = image.map { $0.gray }
+            trainImages.append(grayscale.byteArray())
         }
         
         
@@ -88,7 +119,8 @@ extension CMKViewController {
             let angle:Double = .pi * .random(in: 0..<1)
             testAngles.append(angle)
             let image = generateTrainingImage(angle,width,height,thickness)
-            testImages.append(image)
+              let grayscale: Image<UInt8> = image.map { $0.gray }
+            testImages.append(grayscale.byteArray())
         }
         
 

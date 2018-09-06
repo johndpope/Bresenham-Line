@@ -56,7 +56,7 @@ class CMKViewController: NSViewController {
         
         
         let ok = executionTimeInterval {
-            testAndTrainData()
+            testRadialNeuralNetAndTrainData()
         }
         print("time to generateImages:",ok)
 
