@@ -20,8 +20,8 @@ extension CMKViewController {
   
         let thickness:Double = 1.0 // Line thickness
 
-        let numTrain = 10000
-        let numTest = 10000
+        let numTrain = 1000
+        let numTest = 1000
         var testImages:[[Byte]] = []
         var testAngles:[Double] = []
         var trainImages:[[Byte]] = []
@@ -31,11 +31,11 @@ extension CMKViewController {
         for _ in 0..<numTrain{
             let angle:Double = .pi * .random(in: 0..<1)
             //https://stats.stackexchange.com/questions/218407/encoding-angle-data-for-neural-network
-//            let encodedAngle = encodeAngle(angle,"binned") /// 1 -> 500 array 1 hot vector 000000000100000
-//            let encodedAngle = encodeAngle(angle,"gaussian") // FAILS HARD
-//             let encodedAngle = encodeAngle(angle,"scaled")
-//              let encodedAngle = encodeAngle(angle,"cossin")
-            trainAngles.append([angle])
+//            let encodedAngle = encodeAngle(angle,.binned) /// 1 -> 500 array 1 hot vector 000000000100000
+//            let encodedAngle = encodeAngle(angle,.gaussian) // FAILS HARD
+//             let encodedAngle = encodeAngle(angle,.scaled)
+              let encodedAngle = encodeAngle(angle,.cossin)
+            trainAngles.append(encodedAngle)
             let image = generateTrainingImage(angle,width,height,thickness)
             let grayscale: Image<UInt8> = image.map { $0.gray }
             let radialImageArray:[UInt8]  = grayscale.radialCuts()
