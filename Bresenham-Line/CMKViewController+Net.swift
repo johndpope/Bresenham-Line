@@ -58,10 +58,10 @@ extension CMKViewController {
 
             let angle:Double = .pi * .random(in: 0..<1)
             //https://stats.stackexchange.com/questions/218407/encoding-angle-data-for-neural-network
-            let encodedAngle = encodeAngle(angle,.binned) /// 1 -> 500 array 1 hot vector 000000000100000
-//            let encodedAngle = encodeAngle(angle,"gaussian") // FAILS HARD
-//             let encodedAngle = encodeAngle(angle,"scaled")
-//              let encodedAngle = encodeAngle(angle,"cossin")
+//            let encodedAngle = encodeAngle(angle,.binned) /// 1 -> 500 array 1 hot vector 000000000100000
+//            let encodedAngle = encodeAngle(angle,.gaussian) // FAILS HARD
+//             let encodedAngle = encodeAngle(angle,.scaled)
+              let encodedAngle = encodeAngle(angle,.cossin)
 //            print("encodedAngle:",encodedAngle)
             trainAngles.append(encodedAngle)
             let image = generateTrainingImage(angle,width,height,thickness)
