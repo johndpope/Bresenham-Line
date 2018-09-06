@@ -51,53 +51,5 @@
             landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Bresenham-Line/CMKViewController+Net.swift"
-            timestampString = "557859333.624078"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "testAndTrainData()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Bresenham_Line.CMKViewController.testAndTrainData() -&gt; ()"
-                  moduleName = "Bresenham-Line"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jpope/Documents/gitWorkspace/Bresenham-Line/Bresenham-Line/CMKViewController+Net.swift"
-                  timestampString = "557859334.0805039"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "71"
-                  endingLineNumber = "71"
-                  offsetFromSymbolStart = "2848">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Swift.Double) -&gt; Swift.Array&lt;Swift.Double&gt; in Bresenham_Line.CMKViewController.testAndTrainData() -&gt; ()"
-                  moduleName = "Bresenham-Line"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jpope/Documents/gitWorkspace/Bresenham-Line/Bresenham-Line/CMKViewController+Net.swift"
-                  timestampString = "557859334.08234"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "71"
-                  endingLineNumber = "71"
-                  offsetFromSymbolStart = "21">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

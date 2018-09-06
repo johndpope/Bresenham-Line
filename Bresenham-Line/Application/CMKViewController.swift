@@ -54,7 +54,11 @@ class CMKViewController: NSViewController {
         // Comment it to debug mouse track
         isDebug = false
         
-        testAndTrainData()
+        
+        let ok = executionTimeInterval {
+            testAndTrainData()
+        }
+        print("time to generateImages:",ok)
 
     }
     

@@ -2,7 +2,14 @@ import Cocoa
 import EasyImagy
 import Foundation
 import Surge
+import QuartzCore
 
+func executionTimeInterval(block: () -> ()) -> CFTimeInterval {
+    let start = CACurrentMediaTime()
+    block();
+    let end = CACurrentMediaTime()
+    return end - start
+}
 
 
 typealias Byte = UInt8
@@ -44,6 +51,7 @@ extension CMKViewController {
     }
     
     
+
     func testAndTrainData(){
         
         print("BEGIN TEST AND TRAIN DATA")
@@ -51,10 +59,9 @@ extension CMKViewController {
         let height = 101 // Image heigth
         // TOTAL NEURONS 10201 = 101 x 101
         let thickness:Double = 1.0 // Line thickness
-        
-        
-        let numTrain = 1000
-        let numTest = 1000
+
+        let numTrain = 10
+        let numTest = 10
         var testImages:[[Byte]] = []
         var testAngles:[Double] = []
         var trainImages:[[Byte]] = []
@@ -63,13 +70,13 @@ extension CMKViewController {
         
         for _ in 0..<numTrain{
 
-            let angle = Double.pi * Double.random(in: 0..<1)
+            let angle:Double = .pi * .random(in: 0..<1)
             //https://stats.stackexchange.com/questions/218407/encoding-angle-data-for-neural-network
             let encodedAngle = encodeAngle(angle,"binned") /// 1 -> 500 array 1 hot vector 000000000100000
-            let encodedAngle = encodeAngle(angle,"gaussian") // FAILS HARD
+//            let encodedAngle = encodeAngle(angle,"gaussian") // FAILS HARD
 //             let encodedAngle = encodeAngle(angle,"scaled")
 //              let encodedAngle = encodeAngle(angle,"cossin")
-            print("encodedAngle:",encodedAngle)
+//            print("encodedAngle:",encodedAngle)
             trainAngles.append(encodedAngle)
             let image = generateTrainingImage(angle,width,height,thickness)
             trainImages.append(image)
@@ -78,7 +85,7 @@ extension CMKViewController {
         
         for _ in 0..<numTest{
 
-            let angle = Double.pi * Double.random(in: 0..<1)
+            let angle:Double = .pi * .random(in: 0..<1)
             testAngles.append(angle)
             let image = generateTrainingImage(angle,width,height,thickness)
             testImages.append(image)
@@ -87,12 +94,24 @@ extension CMKViewController {
 
         let trainImageData = trainImages.map{ return $0.map{ return   Double($0) / 255 }}
         
-        let network: Network = Network(layerStructure: [10201,500,1], activationFunction: sigmoid, derivativeActivationFunction: derivativeSigmoid, learningRate: 0.006, hasBias: true)
+        do{
+          
+
+            let network = Network(layerStructure: [10201,500,1], activationFunction: sigmoid, derivativeActivationFunction: derivativeSigmoid, learningRate: 0.006, hasBias: true)
+            
+            network.train(inputs: trainImageData, expecteds: trainAngles, printError: true)
+            let testImageData = testImages.map{ return $0.map{ return   Double($0) / 255 }}
+            let (_, _, percentage) = network.validate(inputs: testImageData, expecteds: testAngles, accuracy: 0.95)
+            print( "Accuracy: \(percentage * 100)%")
+            
+            Storage.store(network, to: .documents, as: "network.json")
+              let savedNetwork = Storage.retrieve("network.json", from: .documents, as: Network.self)
+        }
+        catch{
+            print("FAILED")
+        }
+     
         
-        network.train(inputs: trainImageData, expecteds: trainAngles, printError: true)
-        let testImageData = testImages.map{ return $0.map{ return   Double($0) / 255 }}
-        let (_, _, percentage) = network.validate(inputs: testImageData, expecteds: testAngles, accuracy: 0.95)
-        print( "Accuracy: \(percentage * 100)%")
     }
     
     // Returns encoded angle using specified method ("binned","scaled","cossin","gaussian")
@@ -109,10 +128,9 @@ extension CMKViewController {
             let piArray = Array(repeating:-Double.pi ,count:500)
             let idx = Array(repeating:250*(angle/Double.pi + 1),count:500)
 
-            let result = Surge.sub(X,idx )
-            let result2 = Surge.mul(result,piArray)
-            let squared  = Surge.pow(result2, 2)
+            let squared  = pow(mul(piArray,sub(X,idx )), 2)
             X = Surge.exp(squared)
+            print("X:",X)
             
         }else if (method == "scaled"){ // Scaled to [-1,1] encoding
             X = Array([angle/Double.pi])
