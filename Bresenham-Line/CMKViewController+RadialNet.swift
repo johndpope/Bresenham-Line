@@ -12,6 +12,9 @@ extension CMKViewController {
     
 
 
+    // will spit out images with slopes on them.
+    // attempt to use bresenham radial slices instead of square image to slim down neural network
+    //https://stats.stackexchange.com/questions/218407/encoding-angle-data-for-neural-network
     func testRadialNeuralNetAndTrainData(){
         
         print("BEGIN RADIAL TRAIN DATA")
@@ -30,11 +33,11 @@ extension CMKViewController {
         // TRAINING
         for _ in 0..<numTrain{
             let angle:Double = .pi * .random(in: 0..<1)
-            //https://stats.stackexchange.com/questions/218407/encoding-angle-data-for-neural-network
-//            let encodedAngle = encodeAngle(angle,.binned) /// 1 -> 500 array 1 hot vector 000000000100000
+       
+            let encodedAngle = encodeAngle(angle,.binned) /// 1 -> 500 array 1 hot vector 000000000100000
 //            let encodedAngle = encodeAngle(angle,.gaussian) // FAILS HARD
 //             let encodedAngle = encodeAngle(angle,.scaled)
-              let encodedAngle = encodeAngle(angle,.cossin)
+//              let encodedAngle = encodeAngle(angle,.cossin)
             trainAngles.append(encodedAngle)
             let image = generateTrainingImage(angle,width,height,thickness)
             let grayscale: Image<UInt8> = image.map { $0.gray }
@@ -61,7 +64,7 @@ extension CMKViewController {
             // TOTAL NEURONS FOR SQUARE IMAGE - 10201 = 101 x 101
             // TOTAL NEURONS FOR BRESENHAM RADIAL CUTS - 524 /  r = 3 + r = 5 + r = 15 + r = 30 +  r = 45
             
-            let n = trainImages[0].count // will correspond to the counf of 5 radial cuts flattened as array
+            let n = trainImages[0].count // will correspond to the count of 5 radialCuts flattened as array
             
             let network = Network(layerStructure: [n,500,1], activationFunction: sigmoid, derivativeActivationFunction: derivativeSigmoid, learningRate: 0.006, hasBias: true)
             
